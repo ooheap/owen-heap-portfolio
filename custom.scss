@@ -1,0 +1,204 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+/*-- Custom SCSS for Owen Heap Portfolio --*/
+
+/*-- Google Fonts --*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/*-- Color Palette --*/
+$primary:   #1a3a5c;   /* deep navy */
+$accent:    #2e86ab;   /* steel blue */
+$light-bg:  #f8f9fb;
+$border:    #e2e8f0;
+$text-main: #1e293b;
+$text-muted:#64748b;
+
+/*-- Base --*/
+body {
+  font-family: 'Inter', sans-serif;
+  color: $text-main;
+  background: #ffffff;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  color: $primary;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.7rem; border-bottom: 2px solid $border; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+
+a {
+  color: $accent;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+}
+
+/*-- Navbar --*/
+.navbar {
+  background: $primary !important;
+  border-bottom: 3px solid $accent;
+  padding: 0.75rem 1.5rem;
+
+  .navbar-brand {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #ffffff !important;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    &:hover { color: #ffffff !important; }
+  }
+}
+
+/*-- Hero Section (index page) --*/
+.hero {
+  padding: 5rem 0 4rem;
+  border-bottom: 1px solid $border;
+  margin-bottom: 3rem;
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: $text-muted;
+    max-width: 520px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-btns a {
+    display: inline-block;
+    margin-right: 0.75rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+
+    &.btn-primary {
+      background: $primary;
+      color: #fff;
+      border: 2px solid $primary;
+      &:hover { background: $accent; border-color: $accent; text-decoration: none; }
+    }
+    &.btn-outline {
+      background: transparent;
+      color: $primary;
+      border: 2px solid $primary;
+      &:hover { background: $primary; color: #fff; text-decoration: none; }
+    }
+  }
+}
+
+/*-- Project / Post Cards --*/
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.proj-card {
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 1.75rem;
+  background: #fff;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(26,58,92,0.10);
+    transform: translateY(-3px);
+  }
+
+  .proj-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $accent;
+    background: rgba(46,134,171,0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    margin: 0.5rem 0;
+    color: $primary;
+  }
+
+  p { color: $text-muted; font-size: 0.9rem; margin: 0 0 1rem; }
+
+  a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $accent;
+  }
+}
+
+/*-- Skills / Stats strip --*/
+.skills-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+
+  .skill-pill {
+    background: $light-bg;
+    border: 1px solid $border;
+    border-radius: 20px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: $text-main;
+  }
+}
+
+/*-- Footer --*/
+.nav-footer {
+  background: $light-bg;
+  border-top: 1px solid $border;
+  color: $text-muted;
+  font-size: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/*-- Quarto listing tweaks --*/
+.quarto-listing .listing-title { color: $primary; font-family: 'Source Serif 4', serif; }
+.quarto-listing .listing-description { color: $text-muted; }
+
+/*-- TOC --*/
+#TOC { font-size: 0.875rem; }
+#TOC a { color: $text-muted; &:hover { color: $accent; } }

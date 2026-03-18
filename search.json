@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
+  },
+  {
+    "objectID": "projects.html#statistical-modeling",
+    "href": "projects.html#statistical-modeling",
+    "title": "Projects",
+    "section": "Statistical Modeling",
+    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
+  },
+  {
+    "objectID": "projects.html#data-visualization",
+    "href": "projects.html#data-visualization",
+    "title": "Projects",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nProject Title Two\nTools: R, ggplot2, Shiny (or Quarto dashboards)\nSummary: What were you trying to communicate visually? What design decisions did you make and why?\nRead write-up →"
+  },
+  {
+    "objectID": "projects.html#add-more-projects",
+    "href": "projects.html#add-more-projects",
+    "title": "Projects",
+    "section": "Add More Projects",
+    "text": "Add More Projects\nCopy any block above and fill in your own details. Each project can link to:\n\nA .qmd file in the posts/ folder (full write-up with code)\nAn external URL (GitHub repo, Shiny app, etc.)\nA rendered dashboard\n\n\nTip: The best portfolio projects show your thinking, not just your code. Include a section on what you tried that didn’t work."
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Your First Project Write-Up\n\n\n\nR\n\nvisualization\n\nstatistics\n\n\n\nA template for writing up a data science project with R code.\n\n\n\n\n\nMar 18, 2026\n\n2 min\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a data scientist with a focus on statistical modeling and data visualization using R. Write 2–3 sentences about your background — where you studied, what you’re working on, or what kind of problems you love solving."
+  },
+  {
+    "objectID": "about.html#hi-im-owen-heap",
+    "href": "about.html#hi-im-owen-heap",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a data scientist with a focus on statistical modeling and data visualization using R. Write 2–3 sentences about your background — where you studied, what you’re working on, or what kind of problems you love solving."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "Background",
+    "text": "Background\nTell your story here. A few paragraphs work well:\n\nWhere did you study / what’s your degree?\nWhat got you into data science?\nWhat are you working on now (job, research, personal projects)?"
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\n📧 your.email@example.com\n🐙 github.com/yourusername\n💼 linkedin.com/in/yourusername"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
+    "title": "",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\n\n  \n    R · ggplot2\n    Project Title One\n    A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.\n    View project →\n  \n\n  \n    R · Shiny\n    Project Title Two\n    Describe the dashboard or app you built — the business or research question it answers and what's interactive.\n    View project →\n  \n\n  \n    Statistics · tidymodels\n    Project Title Three\n    Outline a modeling project — what you predicted, the approach you took, and the key result.\n    View project →"
+  },
+  {
+    "objectID": "index.html#tools-skills",
+    "href": "index.html#tools-skills",
+    "title": "",
+    "section": "Tools & Skills",
+    "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization"
+  },
+  {
+    "objectID": "index.html#latest-posts",
+    "href": "index.html#latest-posts",
+    "title": "",
+    "section": "Latest Posts",
+    "text": "Latest Posts\n\n\n\n\n→ See all posts"
+  },
+  {
+    "objectID": "posts/project-one.html",
+    "href": "posts/project-one.html",
+    "title": "Your First Project Write-Up",
+    "section": "",
+    "text": "Start with the why. What question were you trying to answer? Who would care about this?\n\n\nCode\nlibrary(tidyverse)\n# library(tidymodels)  # uncomment if modeling"
+  },
+  {
+    "objectID": "posts/project-one.html#overview",
+    "href": "posts/project-one.html#overview",
+    "title": "Your First Project Write-Up",
+    "section": "",
+    "text": "Start with the why. What question were you trying to answer? Who would care about this?\n\n\nCode\nlibrary(tidyverse)\n# library(tidymodels)  # uncomment if modeling"
+  },
+  {
+    "objectID": "posts/project-one.html#the-data",
+    "href": "posts/project-one.html#the-data",
+    "title": "Your First Project Write-Up",
+    "section": "The Data",
+    "text": "The Data\nDescribe your data source. Where did it come from? What does each row represent?\n\n\nCode\n# Replace with your actual data loading\n# data &lt;- read_csv(\"data/your-file.csv\")\n\n# Example with built-in data:\nglimpse(mtcars)\n\n\nRows: 32\nColumns: 11\n$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…"
+  },
+  {
+    "objectID": "posts/project-one.html#exploration",
+    "href": "posts/project-one.html#exploration",
+    "title": "Your First Project Write-Up",
+    "section": "Exploration",
+    "text": "Exploration\nWhat did you find when you first looked at the data?\n\n\nCode\nmtcars |&gt;\n  ggplot(aes(x = wt, y = mpg, color = factor(cyl))) +\n  geom_point(size = 3, alpha = 0.8) +\n  scale_color_manual(values = c(\"#1a3a5c\", \"#2e86ab\", \"#a8d8ea\")) +\n  labs(\n    title = \"Your Plot Title\",\n    x = \"X Axis Label\",\n    y = \"Y Axis Label\",\n    color = \"Group\"\n  ) +\n  theme_minimal(base_size = 13)\n\n\n\n\n\nA descriptive caption for your plot"
+  },
+  {
+    "objectID": "posts/project-one.html#analysis",
+    "href": "posts/project-one.html#analysis",
+    "title": "Your First Project Write-Up",
+    "section": "Analysis",
+    "text": "Analysis\nWalk through your methodology here. Code-fold is on by default so readers can toggle code.\n\n\nCode\n# Your modeling code here\nsummary(lm(mpg ~ wt + cyl, data = mtcars))\n\n\n\nCall:\nlm(formula = mpg ~ wt + cyl, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.2893 -1.5512 -0.4684  1.5743  6.1004 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  39.6863     1.7150  23.141  &lt; 2e-16 ***\nwt           -3.1910     0.7569  -4.216 0.000222 ***\ncyl          -1.5078     0.4147  -3.636 0.001064 ** \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.568 on 29 degrees of freedom\nMultiple R-squared:  0.8302,    Adjusted R-squared:  0.8185 \nF-statistic: 70.91 on 2 and 29 DF,  p-value: 6.809e-12"
+  },
+  {
+    "objectID": "posts/project-one.html#results",
+    "href": "posts/project-one.html#results",
+    "title": "Your First Project Write-Up",
+    "section": "Results",
+    "text": "Results\nWhat did you find? Lead with the finding, then support it with the output above."
+  },
+  {
+    "objectID": "posts/project-one.html#takeaways",
+    "href": "posts/project-one.html#takeaways",
+    "title": "Your First Project Write-Up",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nWhat worked well?\nWhat would you do differently?\nWhat’s the next question this raises?"
+  }
+]
