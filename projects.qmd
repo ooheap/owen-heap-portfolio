@@ -1,0 +1,39 @@
+---
+title: "Projects"
+description: "A collection of data science projects in R, statistics, and visualization."
+toc: false
+---
+
+Below are selected projects. Each links to a full write-up with code, methodology, and results.
+
+---
+
+## Statistical Modeling
+
+### Project Title One
+**Tools:** R, tidymodels, ggplot2  
+**Summary:** Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?
+
+[Read write-up →](posts/project-one.qmd)
+
+---
+
+## Data Visualization
+
+### Project Title Two
+**Tools:** R, ggplot2, Shiny (or Quarto dashboards)  
+**Summary:** What were you trying to communicate visually? What design decisions did you make and why?
+
+[Read write-up →](posts/project-two.qmd)
+
+---
+
+## Add More Projects
+
+Copy any block above and fill in your own details. Each project can link to:
+
+- A `.qmd` file in the `posts/` folder (full write-up with code)
+- An external URL (GitHub repo, Shiny app, etc.)
+- A rendered dashboard
+
+> **Tip:** The best portfolio projects show your *thinking*, not just your code. Include a section on what you tried that didn't work.

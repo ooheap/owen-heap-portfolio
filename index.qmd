@@ -1,0 +1,81 @@
+---
+title: ""
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="hero">
+  <div class="hero-eyebrow">Data Scientist</div>
+  <h1>Hi, I'm Owen Heap.</h1>
+  <p class="hero-subtitle">
+    I turn messy data into clear insight — specializing in statistical modeling,
+    R programming, and interactive data visualization.
+  </p>
+  <div class="hero-btns">
+    <a href="projects.qmd" class="btn-primary">View Projects</a>
+    <a href="about.qmd" class="btn-outline">About Me</a>
+  </div>
+</div>
+```
+
+## Featured Projects
+
+```{=html}
+<div class="card-grid">
+
+  <div class="proj-card">
+    <span class="proj-tag">R · ggplot2</span>
+    <h3>Project Title One</h3>
+    <p>A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.</p>
+    <a href="projects.qmd">View project →</a>
+  </div>
+
+  <div class="proj-card">
+    <span class="proj-tag">R · Shiny</span>
+    <h3>Project Title Two</h3>
+    <p>Describe the dashboard or app you built — the business or research question it answers and what's interactive.</p>
+    <a href="projects.qmd">View project →</a>
+  </div>
+
+  <div class="proj-card">
+    <span class="proj-tag">Statistics · tidymodels</span>
+    <h3>Project Title Three</h3>
+    <p>Outline a modeling project — what you predicted, the approach you took, and the key result.</p>
+    <a href="projects.qmd">View project →</a>
+  </div>
+
+</div>
+```
+
+## Tools & Skills
+
+```{=html}
+<div class="skills-strip">
+  <span class="skill-pill">R</span>
+  <span class="skill-pill">ggplot2</span>
+  <span class="skill-pill">tidyverse</span>
+  <span class="skill-pill">tidymodels</span>
+  <span class="skill-pill">Shiny</span>
+  <span class="skill-pill">Quarto</span>
+  <span class="skill-pill">R Markdown</span>
+  <span class="skill-pill">SQL</span>
+  <span class="skill-pill">Statistics</span>
+  <span class="skill-pill">Data Visualization</span>
+</div>
+```
+
+## Latest Posts
+
+```{=html}
+<!-- Quarto will auto-populate this listing from the posts/ folder -->
+```
+
+::: {.column-page}
+```{r}
+#| echo: false
+#| message: false
+```
+:::
+
+→ [See all posts](posts/index.qmd)

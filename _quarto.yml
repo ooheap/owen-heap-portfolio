@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Owen Heap"
+  description: "Data Scientist — R, Statistics & Visualization"
+  favicon: assets/img/favicon.ico
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: posts/index.qmd
+        text: Blog
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/yourusername
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://linkedin.com/in/yourusername
+        aria-label: LinkedIn
+  page-footer:
+    center: "© 2026 Owen Heap · Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+    css: custom.scss
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-tools: true
+    highlight-style: github
+    mainfont: "Source Serif 4"
+    monofont: "JetBrains Mono"
+
+execute:
+  freeze: auto

@@ -1,0 +1,49 @@
+---
+title: "About Me"
+toc: false
+---
+
+## Hi, I'm Owen Heap
+
+<!-- Add a photo: place a headshot at assets/img/headshot.jpg and uncomment below -->
+<!-- ![Owen Heap](assets/img/headshot.jpg){width=200px style="border-radius:50%; float:right; margin-left:2rem;"} -->
+
+I'm a data scientist with a focus on statistical modeling and data visualization using R.
+Write 2–3 sentences about your background — where you studied, what you're working on,
+or what kind of problems you love solving.
+
+---
+
+## Background
+
+Tell your story here. A few paragraphs work well:
+
+- Where did you study / what's your degree?
+- What got you into data science?
+- What are you working on now (job, research, personal projects)?
+
+---
+
+## Skills
+
+```{=html}
+<div class="skills-strip">
+  <span class="skill-pill">R</span>
+  <span class="skill-pill">ggplot2</span>
+  <span class="skill-pill">tidyverse</span>
+  <span class="skill-pill">tidymodels</span>
+  <span class="skill-pill">Shiny</span>
+  <span class="skill-pill">Quarto</span>
+  <span class="skill-pill">SQL</span>
+  <span class="skill-pill">Statistics</span>
+  <span class="skill-pill">Data Visualization</span>
+</div>
+```
+
+---
+
+## Contact
+
+- 📧 [your.email@example.com](mailto:your.email@example.com)
+- 🐙 [github.com/yourusername](https://github.com/yourusername)
+- 💼 [linkedin.com/in/yourusername](https://linkedin.com/in/yourusername)

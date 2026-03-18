@@ -1,0 +1,15 @@
+{
+  "hash": "8eef96897e36fd2e4ef85d029b3158b2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"\"\npage-layout: full\ntoc: false\n---\n\n```{=html}\n<div class=\"hero\">\n  <div class=\"hero-eyebrow\">Data Scientist</div>\n  <h1>Hi, I'm Owen Heap.</h1>\n  <p class=\"hero-subtitle\">\n    I turn messy data into clear insight — specializing in statistical modeling,\n    R programming, and interactive data visualization.\n  </p>\n  <div class=\"hero-btns\">\n    <a href=\"projects.qmd\" class=\"btn-primary\">View Projects</a>\n    <a href=\"about.qmd\" class=\"btn-outline\">About Me</a>\n  </div>\n</div>\n```\n\n## Featured Projects\n\n```{=html}\n<div class=\"card-grid\">\n\n  <div class=\"proj-card\">\n    <span class=\"proj-tag\">R · ggplot2</span>\n    <h3>Project Title One</h3>\n    <p>A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.</p>\n    <a href=\"projects.qmd\">View project →</a>\n  </div>\n\n  <div class=\"proj-card\">\n    <span class=\"proj-tag\">R · Shiny</span>\n    <h3>Project Title Two</h3>\n    <p>Describe the dashboard or app you built — the business or research question it answers and what's interactive.</p>\n    <a href=\"projects.qmd\">View project →</a>\n  </div>\n\n  <div class=\"proj-card\">\n    <span class=\"proj-tag\">Statistics · tidymodels</span>\n    <h3>Project Title Three</h3>\n    <p>Outline a modeling project — what you predicted, the approach you took, and the key result.</p>\n    <a href=\"projects.qmd\">View project →</a>\n  </div>\n\n</div>\n```\n\n## Tools & Skills\n\n```{=html}\n<div class=\"skills-strip\">\n  <span class=\"skill-pill\">R</span>\n  <span class=\"skill-pill\">ggplot2</span>\n  <span class=\"skill-pill\">tidyverse</span>\n  <span class=\"skill-pill\">tidymodels</span>\n  <span class=\"skill-pill\">Shiny</span>\n  <span class=\"skill-pill\">Quarto</span>\n  <span class=\"skill-pill\">R Markdown</span>\n  <span class=\"skill-pill\">SQL</span>\n  <span class=\"skill-pill\">Statistics</span>\n  <span class=\"skill-pill\">Data Visualization</span>\n</div>\n```\n\n## Latest Posts\n\n```{=html}\n<!-- Quarto will auto-populate this listing from the posts/ folder -->\n```\n\n::: {.column-page}\n\n::: {.cell}\n\n:::\n\n:::\n\n→ [See all posts](posts/index.qmd)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

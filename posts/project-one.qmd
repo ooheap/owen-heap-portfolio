@@ -1,0 +1,76 @@
+---
+title: "Your First Project Write-Up"
+description: "A template for writing up a data science project with R code."
+date: "2026-03-18"
+categories: [R, visualization, statistics]
+image: ""   # optional: path to a preview image
+---
+
+## Overview
+
+Start with the *why*. What question were you trying to answer? Who would care about this?
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+# library(tidymodels)  # uncomment if modeling
+```
+
+## The Data
+
+Describe your data source. Where did it come from? What does each row represent?
+
+```{r}
+#| label: load-data
+
+# Replace with your actual data loading
+# data <- read_csv("data/your-file.csv")
+
+# Example with built-in data:
+glimpse(mtcars)
+```
+
+## Exploration
+
+What did you find when you first looked at the data?
+
+```{r}
+#| label: eda-plot
+#| fig-cap: "A descriptive caption for your plot"
+
+mtcars |>
+  ggplot(aes(x = wt, y = mpg, color = factor(cyl))) +
+  geom_point(size = 3, alpha = 0.8) +
+  scale_color_manual(values = c("#1a3a5c", "#2e86ab", "#a8d8ea")) +
+  labs(
+    title = "Your Plot Title",
+    x = "X Axis Label",
+    y = "Y Axis Label",
+    color = "Group"
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+## Analysis
+
+Walk through your methodology here. Code-fold is on by default so readers can toggle code.
+
+```{r}
+#| label: model
+
+# Your modeling code here
+summary(lm(mpg ~ wt + cyl, data = mtcars))
+```
+
+## Results
+
+What did you find? Lead with the finding, then support it with the output above.
+
+## Takeaways
+
+- What worked well?
+- What would you do differently?
+- What's the next question this raises?
