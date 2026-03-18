@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "",
+    "section": "Summary",
+    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "",
+    "section": "Education",
+    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
+  },
+  {
+    "objectID": "resume.html#work-experience",
+    "href": "resume.html#work-experience",
+    "title": "",
+    "section": "Work Experience",
+    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
+  },
+  {
+    "objectID": "resume.html#soft-skills",
+    "href": "resume.html#soft-skills",
+    "title": "",
+    "section": "Soft Skills",
+    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
+  },
+  {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
@@ -33,41 +75,6 @@
     "title": "Blog",
     "section": "",
     "text": "Your First Project Write-Up\n\n\n\nR\n\nvisualization\n\nstatistics\n\n\n\nA template for writing up a data science project with R code.\n\n\n\n\n\nMar 18, 2026\n\n2 min\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I’m a data scientist with a focus on statistical modeling and data visualization using R. Write 2–3 sentences about your background — where you studied, what you’re working on, or what kind of problems you love solving."
-  },
-  {
-    "objectID": "about.html#hi-im-owen-heap",
-    "href": "about.html#hi-im-owen-heap",
-    "title": "About Me",
-    "section": "",
-    "text": "I’m a data scientist with a focus on statistical modeling and data visualization using R. Write 2–3 sentences about your background — where you studied, what you’re working on, or what kind of problems you love solving."
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Me",
-    "section": "Background",
-    "text": "Background\nTell your story here. A few paragraphs work well:\n\nWhere did you study / what’s your degree?\nWhat got you into data science?\nWhat are you working on now (job, research, personal projects)?"
-  },
-  {
-    "objectID": "about.html#skills",
-    "href": "about.html#skills",
-    "title": "About Me",
-    "section": "Skills",
-    "text": "Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About Me",
-    "section": "Contact",
-    "text": "Contact\n\n📧 your.email@example.com\n🐙 github.com/yourusername\n💼 linkedin.com/in/yourusername"
   },
   {
     "objectID": "index.html",
@@ -145,5 +152,40 @@
     "title": "Your First Project Write-Up",
     "section": "Takeaways",
     "text": "Takeaways\n\nWhat worked well?\nWhat would you do differently?\nWhat’s the next question this raises?"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a data scientist with a focus on statistical modeling and data visualization using R. Write 2–3 sentences about your background — where you studied, what you’re working on, or what kind of problems you love solving."
+  },
+  {
+    "objectID": "about.html#hi-im-owen-heap",
+    "href": "about.html#hi-im-owen-heap",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a data scientist with a focus on statistical modeling and data visualization using R. Write 2–3 sentences about your background — where you studied, what you’re working on, or what kind of problems you love solving."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "Background",
+    "text": "Background\nTell your story here. A few paragraphs work well:\n\nWhere did you study / what’s your degree?\nWhat got you into data science?\nWhat are you working on now (job, research, personal projects)?"
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\n📧 your.email@example.com\n🐙 github.com/yourusername\n💼 linkedin.com/in/yourusername"
   }
 ]
