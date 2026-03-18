@@ -16,6 +16,8 @@ website:
         text: Blog
       - href: about.qmd
         text: About
+      - href: resume.qmd
+        text: Resume
     right:
       - icon: github
         href: https://github.com/yourusername

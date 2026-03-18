@@ -1,0 +1,92 @@
+---
+title: ""
+toc: false
+---
+
+```{=html}
+<div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem; padding-bottom:1.5rem; border-bottom:2px solid #e2e8f0;">
+  <div>
+    <h1 style="margin:0; font-size:2.4rem;">Owen Heap</h1>
+    <p style="margin:0.4rem 0 0; color:#64748b; font-size:1rem;">
+      📍 Rexburg, ID &nbsp;·&nbsp;
+      ✉️ <a href="mailto:owenheap03@gmail.com">owenheap03@gmail.com</a> &nbsp;·&nbsp;
+      📞 +1 760 484 0515 &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/owen-heap-574a572b6/" target="_blank">LinkedIn</a>
+    </p>
+  </div>
+  <a href="assets/OwenHeap_Resume.pdf" download
+     style="display:inline-block; padding:0.55rem 1.3rem; background:#1a3a5c; color:#fff;
+            border-radius:6px; font-weight:600; font-size:0.875rem; text-decoration:none;
+            transition:background 0.2s;"
+     onmouseover="this.style.background='#2e86ab'"
+     onmouseout="this.style.background='#1a3a5c'">
+    ⬇ Download PDF
+  </a>
+</div>
+```
+
+## Summary
+
+Data-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results.
+
+---
+
+## Education
+
+**B.S. in Data Science** · Brigham Young University – Idaho, Rexburg, ID
+`January 2024 – Present`
+
+- GPA: 3.9
+
+---
+
+## Technical Skills
+
+| Area | Tools & Technologies |
+|------|----------------------|
+| Data Analysis & Statistics | Regression analysis, hypothesis testing, data validation |
+| Data Visualization | Tableau, R, Python |
+| Other | Excel, GitHub, SQL |
+
+---
+
+## Work Experience
+
+**Video Team Operator** · Becklar, Rexburg, ID
+`January 2026 – Present`
+
+- Monitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time
+- Record data with clear summaries to support follow-up actions and reporting
+- Communicate information to supervisors and on-site teams to ensure fast, coordinated responses
+
+---
+
+**Campus Life Team Member** · Brigham Young University-Idaho, Rexburg, ID
+`April 2024 – September 2025`
+
+- Coordinated and set up campus-wide events for students
+- Gained experience in a fast-paced environment by quickly learning new processes and systems
+- Communicated with customers, supervisors, and team members
+
+---
+
+**Front Desk Receptionist** · Mount Woodson Golf Club, Ramona, CA
+`January 2021 – December 2021`
+
+- Greeted and welcomed guests, providing a positive first impression
+- Scheduled appointments and maintained an organized calendar for multiple staff members
+- Provided administrative support including data entry and filing
+
+---
+
+## Soft Skills
+
+```{=html}
+<div class="skills-strip">
+  <span class="skill-pill">Analytical problem solving</span>
+  <span class="skill-pill">Attention to detail</span>
+  <span class="skill-pill">Cross-functional collaboration</span>
+  <span class="skill-pill">Written & verbal communication</span>
+  <span class="skill-pill">Customer-focused mindset</span>
+</div>
+```
