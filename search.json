@@ -172,14 +172,14 @@
     "href": "about.html#background",
     "title": "About Me",
     "section": "Background",
-    "text": "Background\nTell your story here. A few paragraphs work well:\n\nWhere did you study / what’s your degree?\nWhat got you into data science?\nWhat are you working on now (job, research, personal projects)?"
+    "text": "Background\nTell your story here. A few paragraphs work well:\n\nSenior Studying Data Science at Brigham Young University - Idaho\nI love using data to solve problems and tell a story\nCurrently working on improving my skills in machine learning and data visualization through classes and personal projects"
   },
   {
     "objectID": "about.html#skills",
     "href": "about.html#skills",
     "title": "About Me",
     "section": "Skills",
-    "text": "Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
+    "text": "Skills\n\n  R\n  Pandas\n  ggplot2\n  tidyverse\n  Quarto\n  SQL\n  Statistics\n  Data Visualization\n  Machine Learning"
   },
   {
     "objectID": "about.html#contact",
