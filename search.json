@@ -1,5 +1,68 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
+    "title": "",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\n\n  \n    R · ggplot2\n    Project Title One\n    A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.\n    View project →\n  \n\n  \n    R · Shiny\n    Project Title Two\n    Describe the dashboard or app you built — the business or research question it answers and what's interactive.\n    View project →\n  \n\n  \n    Statistics · tidymodels\n    Project Title Three\n    Outline a modeling project — what you predicted, the approach you took, and the key result.\n    View project →"
+  },
+  {
+    "objectID": "index.html#tools-skills",
+    "href": "index.html#tools-skills",
+    "title": "",
+    "section": "Tools & Skills",
+    "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization"
+  },
+  {
+    "objectID": "index.html#latest-posts",
+    "href": "index.html#latest-posts",
+    "title": "",
+    "section": "Latest Posts",
+    "text": "Latest Posts\n\n\n\n\n→ See all posts"
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Your First Project Write-Up\n\n\n\nR\n\nvisualization\n\nstatistics\n\n\n\nA template for writing up a data science project with R code.\n\n\n\n\n\nMar 18, 2026\n\n2 min\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
+  },
+  {
+    "objectID": "projects.html#statistical-modeling",
+    "href": "projects.html#statistical-modeling",
+    "title": "Projects",
+    "section": "Statistical Modeling",
+    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
+  },
+  {
+    "objectID": "projects.html#data-visualization",
+    "href": "projects.html#data-visualization",
+    "title": "Projects",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nProject Title Two\nTools: R, ggplot2, Shiny (or Quarto dashboards)\nSummary: What were you trying to communicate visually? What design decisions did you make and why?\nRead write-up →"
+  },
+  {
+    "objectID": "projects.html#add-more-projects",
+    "href": "projects.html#add-more-projects",
+    "title": "Projects",
+    "section": "Add More Projects",
+    "text": "Add More Projects\nCopy any block above and fill in your own details. Each project can link to:\n\nA .qmd file in the posts/ folder (full write-up with code)\nAn external URL (GitHub repo, Shiny app, etc.)\nA rendered dashboard\n\n\nTip: The best portfolio projects show your thinking, not just your code. Include a section on what you tried that didn’t work."
+  },
+  {
     "objectID": "resume.html",
     "href": "resume.html",
     "title": "",
@@ -40,69 +103,6 @@
     "title": "",
     "section": "Soft Skills",
     "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
-  },
-  {
-    "objectID": "projects.html#statistical-modeling",
-    "href": "projects.html#statistical-modeling",
-    "title": "Projects",
-    "section": "Statistical Modeling",
-    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
-  },
-  {
-    "objectID": "projects.html#data-visualization",
-    "href": "projects.html#data-visualization",
-    "title": "Projects",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nProject Title Two\nTools: R, ggplot2, Shiny (or Quarto dashboards)\nSummary: What were you trying to communicate visually? What design decisions did you make and why?\nRead write-up →"
-  },
-  {
-    "objectID": "projects.html#add-more-projects",
-    "href": "projects.html#add-more-projects",
-    "title": "Projects",
-    "section": "Add More Projects",
-    "text": "Add More Projects\nCopy any block above and fill in your own details. Each project can link to:\n\nA .qmd file in the posts/ folder (full write-up with code)\nAn external URL (GitHub repo, Shiny app, etc.)\nA rendered dashboard\n\n\nTip: The best portfolio projects show your thinking, not just your code. Include a section on what you tried that didn’t work."
-  },
-  {
-    "objectID": "posts/index.html",
-    "href": "posts/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Your First Project Write-Up\n\n\n\nR\n\nvisualization\n\nstatistics\n\n\n\nA template for writing up a data science project with R code.\n\n\n\n\n\nMar 18, 2026\n\n2 min\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "index.html#featured-projects",
-    "href": "index.html#featured-projects",
-    "title": "",
-    "section": "Featured Projects",
-    "text": "Featured Projects\n\n\n  \n    R · ggplot2\n    Project Title One\n    A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.\n    View project →\n  \n\n  \n    R · Shiny\n    Project Title Two\n    Describe the dashboard or app you built — the business or research question it answers and what's interactive.\n    View project →\n  \n\n  \n    Statistics · tidymodels\n    Project Title Three\n    Outline a modeling project — what you predicted, the approach you took, and the key result.\n    View project →"
-  },
-  {
-    "objectID": "index.html#tools-skills",
-    "href": "index.html#tools-skills",
-    "title": "",
-    "section": "Tools & Skills",
-    "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization"
-  },
-  {
-    "objectID": "index.html#latest-posts",
-    "href": "index.html#latest-posts",
-    "title": "",
-    "section": "Latest Posts",
-    "text": "Latest Posts\n\n\n\n\n→ See all posts"
   },
   {
     "objectID": "posts/project-one.html",
@@ -186,6 +186,6 @@
     "href": "about.html#contact",
     "title": "About Me",
     "section": "Contact",
-    "text": "Contact\n\n📧 your.email@example.com\n🐙 github.com/yourusername\n💼 linkedin.com/in/yourusername"
+    "text": "Contact\n\n📧 ooheap@gmail.com\n🐙 github.com/ooheap\n💼 linkedin.com/in/owen-heap"
   }
 ]
