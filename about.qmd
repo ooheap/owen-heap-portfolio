@@ -5,8 +5,7 @@ toc: false
 
 ## Hi, I'm Owen Heap
 
-<!-- Add a photo: place a headshot at assets/img/headshot.jpg and uncomment below -->
-<!-- ![Owen Heap](assets/img/headshot.jpg){width=200px style="border-radius:50%; float:right; margin-left:2rem;"} -->
+<!-- ![Owen Heap](C:\owen-heap-portfolio\assets\Screenshot 2025-02-04 103845.png){width=200px style="border-radius:50%; float:right; margin-left:2rem;"} -->
 
 I'm a data scientist with a focus on statistical modeling and data visualization using R.
 Write 2–3 sentences about your background — where you studied, what you're working on,
@@ -44,6 +43,6 @@ Tell your story here. A few paragraphs work well:
 
 ## Contact
 
-- 📧 [your.email@example.com](mailto:your.email@example.com)
-- 🐙 [github.com/yourusername](https://github.com/yourusername)
-- 💼 [linkedin.com/in/yourusername](https://linkedin.com/in/yourusername)
+- 📧 [ooheap@gmail.com](mailto:ooheap@gmail.com)
+- 🐙 [github.com/ooheap](https://github.com/ooheap)
+- 💼 [linkedin.com/in/owen-heap](https://www.linkedin.com/in/owen-heap-574a572b6/)
