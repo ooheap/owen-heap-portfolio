@@ -5,7 +5,7 @@ toc: false
 
 ## Hi, I'm Owen Heap
 
-![Owen Heap](C:\owen-heap-portfolio\assets\Screenshot 2025-02-04 103845.png){width=200px style="border-radius:50%; float:right; margin-left:2rem;"}
+![Owen Heap](assets\Screenshot 2025-02-04 103845.png){width=200px style="border-radius:50%; float:right; margin-left:2rem;"}
 
 I'm studying data science and have a passion for using data to tell compelling stories. I enjoy exploring data, building models, and creating visualizations that help others understand complex information.
 
@@ -15,9 +15,9 @@ I'm studying data science and have a passion for using data to tell compelling s
 
 Tell your story here. A few paragraphs work well:
 
-- Where did you study / what's your degree?
-- What got you into data science?
-- What are you working on now (job, research, personal projects)?
+- Senior Studying Data Science at Brigham Young University - Idaho
+- I love using data to solve problems and tell a story
+- Currently working on improving my skills in machine learning and data visualization through classes and personal projects
 
 ---
 
@@ -26,14 +26,14 @@ Tell your story here. A few paragraphs work well:
 ```{=html}
 <div class="skills-strip">
   <span class="skill-pill">R</span>
+  <span class="skill-pill">Pandas</span>
   <span class="skill-pill">ggplot2</span>
   <span class="skill-pill">tidyverse</span>
-  <span class="skill-pill">tidymodels</span>
-  <span class="skill-pill">Shiny</span>
   <span class="skill-pill">Quarto</span>
   <span class="skill-pill">SQL</span>
   <span class="skill-pill">Statistics</span>
   <span class="skill-pill">Data Visualization</span>
+  <span class="skill-pill">Machine Learning</span>
 </div>
 ```
 
