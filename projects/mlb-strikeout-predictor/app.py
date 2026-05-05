@@ -229,16 +229,20 @@ def load_team_batting() -> pd.DataFrame:
     df = frames[0]
     df.columns = [c.strip() for c in df.columns]
 
+    # Baseball Reference uses 'Tm', not 'Team'
+    team_col = "Tm" if "Tm" in df.columns else "Team"
+
     # Drop multi-team "TOT" rows
-    df = df[~df["Team"].isin(["TOT", "- - -"])].copy()
+    df = df[~df[team_col].isin(["TOT", "- - -"])].copy()
 
     df["SO"] = pd.to_numeric(df.get("SO", pd.Series(dtype=float)), errors="coerce")
     df["PA"] = pd.to_numeric(df.get("PA", pd.Series(dtype=float)), errors="coerce")
     df = df.dropna(subset=["SO", "PA"])
     df = df[df["PA"] > 0]
 
-    agg = df.groupby("Team", as_index=False).agg(SO=("SO", "sum"), PA=("PA", "sum"))
+    agg = df.groupby(team_col, as_index=False).agg(SO=("SO", "sum"), PA=("PA", "sum"))
     agg["K%"] = agg["SO"] / agg["PA"]
+    agg.rename(columns={team_col: "Team"}, inplace=True)
 
     # Map abbreviated team names → full names
     agg["team_full"] = agg["Team"].map(TEAM_FULL).fillna(agg["Team"])
