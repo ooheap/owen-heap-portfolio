@@ -11,7 +11,7 @@
     "href": "index.html#featured-projects",
     "title": "",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\n\n  \n    R · ggplot2\n    Project Title One\n    A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →\n\n\n  \n    Statistics · tidymodels\n    Project Title Three\n    Outline a modeling project — what you predicted, the approach you took, and the key result.\n    View project →"
+    "text": "Featured Projects\n\n\n  \n    Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Interactive app that predicts pitcher strikeout totals using K/9, opponent K%, and projected innings. Powered by the live MLB Stats API.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →"
   },
   {
     "objectID": "index.html#tools-skills",
@@ -154,11 +154,11 @@
     "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
   },
   {
-    "objectID": "projects.html#statistical-modeling",
-    "href": "projects.html#statistical-modeling",
+    "objectID": "projects.html#interactive-apps-machine-learning",
+    "href": "projects.html#interactive-apps-machine-learning",
     "title": "Projects",
-    "section": "Statistical Modeling",
-    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
+    "section": "Interactive Apps & Machine Learning",
+    "text": "Interactive Apps & Machine Learning\n\nMLB Strikeout Predictor\nTools: Python, Streamlit, MLB Stats API, pandas\nSummary: A deployed Streamlit app that predicts how many strikeouts a starting pitcher will record against a given opponent. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors: the pitcher’s K/9 rate, projected innings per start, and how often the opposing lineup strikes out relative to the league average. Data is pulled live from the official MLB Stats API and cached for 12 hours.\nView live app & write-up →"
   },
   {
     "objectID": "projects.html#data-visualization",
