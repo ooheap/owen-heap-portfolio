@@ -1,6 +1,6 @@
 ---
 title: "Projects"
-description: "A collection of data science projects in R, statistics, and visualization."
+description: "A collection of data science projects"
 toc: false
 ---
 
@@ -22,18 +22,10 @@ Below are selected projects. Each links to a full write-up with code, methodolog
 
 ### NFL Home Field Advantage Analysis
 **Tools:** Python, nfl_data_py, lets-plot, Quarto 
+
 **Summary:** This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the "2019 anomaly," where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.
 
 [Read write-up →](docs/posts/Home_Field_Advantage.html)
 
 ---
 
-## Add More Projects
-
-Copy any block above and fill in your own details. Each project can link to:
-
-- A `.qmd` file in the `posts/` folder (full write-up with code)
-- An external URL (GitHub repo, Shiny app, etc.)
-- A rendered dashboard
-
-> **Tip:** The best portfolio projects show your *thinking*, not just your code. Include a section on what you tried that didn't work.
