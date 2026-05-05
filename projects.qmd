@@ -20,11 +20,11 @@ Below are selected projects. Each links to a full write-up with code, methodolog
 
 ## Data Visualization
 
-### Project Title Two
+### NFL Home Field Advantage Analysis
 **Tools:** R, ggplot2, Shiny (or Quarto dashboards)  
 **Summary:** What were you trying to communicate visually? What design decisions did you make and why?
 
-[Read write-up →](posts/project-two.qmd)
+[Read write-up →](posts/Home_Field_Advantage.qmd)
 
 ---
 

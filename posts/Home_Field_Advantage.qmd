@@ -1,0 +1,120 @@
+Title: "Analyzing NFL Home Field Advantage"
+format: html
+
+
+## Introduction
+
+Home field advantage in the NFL refers to the tendency for teams to perform better when playing at their home stadium. This analysis examines how home field advantage has evolved from 2010 to 2024 by looking at two key metrics: home team win percentage and average point differential.
+
+## Data
+
+This analysis uses NFL game data from 2010 to 2024, examining regular season and playoff games to understand trends in home field advantage over time.
+
+```{python}
+#| label: load-data
+#| code-fold: true
+import nfl_data_py as nfl
+from lets_plot import *
+import pandas as pd
+import seaborn as sns
+LetsPlot.setup_html()
+years = range(2010, 2025)
+df_games = nfl.import_schedules(years)
+```
+
+
+```{python}
+#| label: Clean Data
+#| code-fold: true
+# identify who won/lost
+# create home_point_diff and home_win columns
+df_games['home_point_diff'] = df_games['home_score'] - df_games['away_score']
+df_games['home_win'] = (df_games['home_point_diff'] > 0).astype(int)
+
+df_hfa = df_games[['season', 'week', 'home_point_diff', 'home_win']]
+
+# Win percentage by season
+win_pct_by_season = df_hfa.groupby('season')['home_win'].mean() * 100
+
+# Average point differential by season  
+avg_diff_by_season = df_hfa.groupby('season')['home_point_diff'].mean()
+
+plot_df_wp = pd.DataFrame({
+    'Season': win_pct_by_season.index,
+    'Win Percentage': win_pct_by_season.values
+})
+
+plot_df_pd = pd.DataFrame({
+    'Season': avg_diff_by_season.index,
+    'Point Difference' : avg_diff_by_season.values
+})
+
+
+```
+
+## Analysis
+
+### Home Win Percentage Trends
+```{python}
+#| code-fold: true
+p = (ggplot(plot_df_wp, aes(x='Season', y='Win Percentage')) +
+    geom_line(color='#013369', size=1.5) +
+    geom_point(color='#013369', size=3) +
+    geom_hline(yintercept=win_pct_by_season.mean(), linetype='dashed', color='gray', size=1) +
+    labs(
+        title='NFL Home Field Advantage: Win Percentage by Season (2010-2024)',
+        subtitle='Average Home Team Win Percentage is 55.7%',
+        x='Season',
+        y='Home Win Percentage (%)'
+    ) +
+    scale_x_continuous(format='d') + 
+    ylim(50, 60) +
+    theme_minimal() +
+    theme(
+        plot_title=element_text(size=16, face='bold'),
+        axis_title=element_text(size=12, face='bold')
+    ))
+
+p
+```
+
+We can easily see that hoime field advantage does exist, on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans, however neither 2019 nor 2021 was played without fans, so this appears to just be an anomaly. Since we can see that the home team does have an edge over their opponents, this made me curious if the point differential would show a similar trend.
+
+### Point Differential Analysis
+
+```{python}
+#| code-fold: true
+p2 = (ggplot(plot_df_pd, aes(x='Season', y='Point Difference')) +
+    geom_line(color='#013369', size=1.5) +
+    geom_point(color='#013369', size=3) +
+    geom_hline(yintercept=0, linetype='dashed', color='lightblue', size=1)+
+    geom_hline(yintercept=avg_diff_by_season.mean(), linetype='dashed', color='gray', size=1) +
+    labs(
+        title='Home Team Average Point Differential (2010-2024)',
+        subtitle='The Home Team Wins By 2.1 Points On Average',
+        x='Season',
+        y='Home Win Point Difference'
+    ) +
+    scale_x_continuous(format='d') + 
+    ylim(-2, 5) +
+    theme_minimal() +
+    theme(
+        plot_title=element_text(size=16, face='bold'),
+        axis_title=element_text(size=12, face='bold')
+    ))
+
+p2
+```
+
+We can easily see that home field advantage does exist; on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time, while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans. However, neither 2019 nor 2021 was played without fans (the 2020 season was the most impacted), so this appears to be an anomaly. Since we can see that the home team has an edge over their opponents, this made me curious if the point differential would show a similar trend.
+
+```{python}
+pd2019 = pd.read_csv('point_dif_2019.csv')
+
+print(pd2019)
+```
+
+We can see that it does in fact have a similar trend. The average point differential is the home team winning by 2.1 points. We can see the same dip around 2020, but what is even more strange is that the 2019 season had an even lower point differential than 2020 did. The 2019 season had an average point differential of 0.04, which is less than 1/20th of a point. This led me to look into this outlier of 2019 more.
+
+## Conclusions
+We can see that the three biggest wins of the 2019 season in terms of point differential were won by the away team. We can also see that seven of the ten largest wins of this season were won by the away team. These large discrepancies are the reason for such a low average point difference in 2019 compared to other seasons.

@@ -5,7 +5,7 @@ toc: false
 
 ## Hi, I'm Owen Heap
 
-![Owen Heap](assets/owenheadshot.png){width=200px style="border-radius:50%; float:right; margin-left:2rem;"}
+![](assets/owenheadshot.png){width=200px style="border-radius:50%; float:right; margin-left:2rem;"}
 
 I'm studying data science and have a passion for using data to tell compelling stories. I enjoy exploring data, building models, and creating visualizations that help others understand complex information.
 
