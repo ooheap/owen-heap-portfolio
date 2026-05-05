@@ -21,102 +21,39 @@
     "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization"
   },
   {
-    "objectID": "posts/Home_Field_Advantage.html",
-    "href": "posts/Home_Field_Advantage.html",
-    "title": "",
+    "objectID": "posts/mlb-strikeout-predictor.html",
+    "href": "posts/mlb-strikeout-predictor.html",
+    "title": "MLB Strikeout Predictor",
     "section": "",
-    "text": "CodeShow All CodeHide All CodeView Source\nTitle: “Analyzing NFL Home Field Advantage” format: html"
+    "text": "This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.\nModel inputs:\n\nK/9 — The pitcher’s season strikeout rate per nine innings (primary signal)\nWhiff% / SwStr% — Swinging-strike rate, a pitch-quality proxy from Statcast\nOpponent K% — How often the opposing lineup strikes out, relative to the league average\nProjected IP — The pitcher’s average innings per start (scales the opportunity)\n\nPrediction formula:\n\\[\\hat{K} = \\frac{K/9}{9} \\times \\overline{IP_{GS}} \\times \\frac{Opp\\ K\\%}{Lg\\ K\\%} \\times f_{whiff}\\]\nConfidence range uses Poisson variance scaled by model uncertainty."
   },
   {
-    "objectID": "posts/Home_Field_Advantage.html#introduction",
-    "href": "posts/Home_Field_Advantage.html#introduction",
-    "title": "",
-    "section": "Introduction",
-    "text": "Introduction\nHome field advantage in the NFL refers to the tendency for teams to perform better when playing at their home stadium. This analysis examines how home field advantage has evolved from 2010 to 2024 by looking at two key metrics: home team win percentage and average point differential."
-  },
-  {
-    "objectID": "posts/Home_Field_Advantage.html#data",
-    "href": "posts/Home_Field_Advantage.html#data",
-    "title": "",
-    "section": "Data",
-    "text": "Data\nThis analysis uses NFL game data from 2010 to 2024, examining regular season and playoff games to understand trends in home field advantage over time.\n\n\nCode\nimport nfl_data_py as nfl\nfrom lets_plot import *\nimport pandas as pd\nimport seaborn as sns\nLetsPlot.setup_html()\nyears = range(2010, 2025)\ndf_games = nfl.import_schedules(years)\n\n\n\n        \n        \n        \n\n\n\n\nCode\n# identify who won/lost\n# create home_point_diff and home_win columns\ndf_games['home_point_diff'] = df_games['home_score'] - df_games['away_score']\ndf_games['home_win'] = (df_games['home_point_diff'] &gt; 0).astype(int)\n\ndf_hfa = df_games[['season', 'week', 'home_point_diff', 'home_win']]\n\n# Win percentage by season\nwin_pct_by_season = df_hfa.groupby('season')['home_win'].mean() * 100\n\n# Average point differential by season  \navg_diff_by_season = df_hfa.groupby('season')['home_point_diff'].mean()\n\nplot_df_wp = pd.DataFrame({\n    'Season': win_pct_by_season.index,\n    'Win Percentage': win_pct_by_season.values\n})\n\nplot_df_pd = pd.DataFrame({\n    'Season': avg_diff_by_season.index,\n    'Point Difference' : avg_diff_by_season.values\n})"
-  },
-  {
-    "objectID": "posts/Home_Field_Advantage.html#analysis",
-    "href": "posts/Home_Field_Advantage.html#analysis",
-    "title": "",
-    "section": "Analysis",
-    "text": "Analysis\n\nHome Win Percentage Trends\n\n\nCode\np = (ggplot(plot_df_wp, aes(x='Season', y='Win Percentage')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=win_pct_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='NFL Home Field Advantage: Win Percentage by Season (2010-2024)',\n        subtitle='Average Home Team Win Percentage is 55.7%',\n        x='Season',\n        y='Home Win Percentage (%)'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(50, 60) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np\n\n\n   \n   \n\n\nWe can easily see that hoime field advantage does exist, on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans, however neither 2019 nor 2021 was played without fans, so this appears to just be an anomaly. Since we can see that the home team does have an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nPoint Differential Analysis\n\n\nCode\np2 = (ggplot(plot_df_pd, aes(x='Season', y='Point Difference')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=0, linetype='dashed', color='lightblue', size=1)+\n    geom_hline(yintercept=avg_diff_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='Home Team Average Point Differential (2010-2024)',\n        subtitle='The Home Team Wins By 2.1 Points On Average',\n        x='Season',\n        y='Home Win Point Difference'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(-2, 5) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np2\n\n\n   \n   \n\n\nWe can easily see that home field advantage does exist; on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time, while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans. However, neither 2019 nor 2021 was played without fans (the 2020 season was the most impacted), so this appears to be an anomaly. Since we can see that the home team has an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nCode\npd2019 = pd.read_csv('C:\\\\owen-heap-portfolio\\\\assets\\\\point_dif_2019.csv')\n\nprint(pd2019)\n\n\n   Rank          Winning Team  Margin  Score           Losing Team  \\\n0     1      Baltimore Ravens      49  59-10        Miami Dolphins   \n1     2  New England Patriots      43   43-0        Miami Dolphins   \n2     3      Baltimore Ravens      39   45-6      Los Angeles Rams   \n3     4   San Francisco 49ers      38  51-13     Carolina Panthers   \n4     5      Baltimore Ravens      36  49-13    Cincinnati Bengals   \n5     6  Los Angeles Chargers      35  45-10  Jacksonville Jaguars   \n6     7      Baltimore Ravens      34   41-7        Houston Texans   \n7     8  New England Patriots      33   33-0         New York Jets   \n8     9    New Orleans Saints      32  42-10     Carolina Panthers   \n9    10    Indianapolis Colts      32   38-6     Carolina Panthers   \n\n  Home/Away (Winner)          Date  \n0               Away   Sep 8, 2019  \n1               Away  Sep 15, 2019  \n2               Away  Nov 25, 2019  \n3               Home  Oct 27, 2019  \n4               Away  Nov 10, 2019  \n5               Away   Dec 8, 2019  \n6               Home  Nov 17, 2019  \n7               Away  Oct 21, 2019  \n8               Away  Dec 29, 2019  \n9               Home  Dec 22, 2019  \n\n\nWe can see that it does in fact have a similar trend. The average point differential is the home team winning by 2.1 points. We can see the same dip around 2020, but what is even more strange is that the 2019 season had an even lower point differential than 2020 did. The 2019 season had an average point differential of 0.04, which is less than 1/20th of a point. This led me to look into this outlier of 2019 more."
-  },
-  {
-    "objectID": "posts/Home_Field_Advantage.html#conclusions",
-    "href": "posts/Home_Field_Advantage.html#conclusions",
-    "title": "",
-    "section": "Conclusions",
-    "text": "Conclusions\nWe can see that the three biggest wins of the 2019 season in terms of point differential were won by the away team. We can also see that seven of the ten largest wins of this season were won by the away team. These large discrepancies are the reason for such a low average point difference in 2019 compared to other seasons."
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
+    "objectID": "posts/mlb-strikeout-predictor.html#overview",
+    "href": "posts/mlb-strikeout-predictor.html#overview",
+    "title": "MLB Strikeout Predictor",
     "section": "",
-    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
+    "text": "This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.\nModel inputs:\n\nK/9 — The pitcher’s season strikeout rate per nine innings (primary signal)\nWhiff% / SwStr% — Swinging-strike rate, a pitch-quality proxy from Statcast\nOpponent K% — How often the opposing lineup strikes out, relative to the league average\nProjected IP — The pitcher’s average innings per start (scales the opportunity)\n\nPrediction formula:\n\\[\\hat{K} = \\frac{K/9}{9} \\times \\overline{IP_{GS}} \\times \\frac{Opp\\ K\\%}{Lg\\ K\\%} \\times f_{whiff}\\]\nConfidence range uses Poisson variance scaled by model uncertainty."
   },
   {
-    "objectID": "projects.html#statistical-modeling",
-    "href": "projects.html#statistical-modeling",
-    "title": "Projects",
-    "section": "Statistical Modeling",
-    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
+    "objectID": "posts/mlb-strikeout-predictor.html#live-app",
+    "href": "posts/mlb-strikeout-predictor.html#live-app",
+    "title": "MLB Strikeout Predictor",
+    "section": "Live App",
+    "text": "Live App"
   },
   {
-    "objectID": "projects.html#data-visualization",
-    "href": "projects.html#data-visualization",
-    "title": "Projects",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto\nSummary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
+    "objectID": "posts/mlb-strikeout-predictor.html#data-sources",
+    "href": "posts/mlb-strikeout-predictor.html#data-sources",
+    "title": "MLB Strikeout Predictor",
+    "section": "Data Sources",
+    "text": "Data Sources\n\n\n\nSource\nWhat it provides\n\n\n\n\nFanGraphs via pybaseball\nPitcher K/9, SwStr%, GS, IP\n\n\nBaseball Reference via pybaseball\nTeam batting K% and plate appearances\n\n\n\nData refreshes every 12 hours via Streamlit’s cache layer. All stats reflect the current 2026 season; the app falls back to 2025 data for pitchers with fewer than 3 starts."
   },
   {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "resume.html#summary",
-    "href": "resume.html#summary",
-    "title": "",
-    "section": "Summary",
-    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "",
-    "section": "Education",
-    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
-  },
-  {
-    "objectID": "resume.html#technical-skills",
-    "href": "resume.html#technical-skills",
-    "title": "",
-    "section": "Technical Skills",
-    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
-  },
-  {
-    "objectID": "resume.html#work-experience",
-    "href": "resume.html#work-experience",
-    "title": "",
-    "section": "Work Experience",
-    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
-  },
-  {
-    "objectID": "resume.html#soft-skills",
-    "href": "resume.html#soft-skills",
-    "title": "",
-    "section": "Soft Skills",
-    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
+    "objectID": "posts/mlb-strikeout-predictor.html#deploy-your-own",
+    "href": "posts/mlb-strikeout-predictor.html#deploy-your-own",
+    "title": "MLB Strikeout Predictor",
+    "section": "Deploy Your Own",
+    "text": "Deploy Your Own\nThe source code lives at projects/mlb-strikeout-predictor/ in this repo.\n# Run locally\npip install -r requirements.txt\nstreamlit run app.py\nTo deploy on Streamlit Cloud:\n\nGo to share.streamlit.io and connect your GitHub account.\nSelect this repository, set the App file path to projects/mlb-strikeout-predictor/app.py.\nClick Deploy — Streamlit Cloud installs requirements.txt automatically.\nCopy the generated URL and paste it into the src attribute of the &lt;iframe&gt; above."
   },
   {
     "objectID": "posts/project-one.html",
@@ -166,6 +103,104 @@
     "title": "Your First Project Write-Up",
     "section": "Takeaways",
     "text": "Takeaways\n\nWhat worked well?\nWhat would you do differently?\nWhat’s the next question this raises?"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "",
+    "section": "Summary",
+    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "",
+    "section": "Education",
+    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
+  },
+  {
+    "objectID": "resume.html#work-experience",
+    "href": "resume.html#work-experience",
+    "title": "",
+    "section": "Work Experience",
+    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
+  },
+  {
+    "objectID": "resume.html#soft-skills",
+    "href": "resume.html#soft-skills",
+    "title": "",
+    "section": "Soft Skills",
+    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
+  },
+  {
+    "objectID": "projects.html#statistical-modeling",
+    "href": "projects.html#statistical-modeling",
+    "title": "Projects",
+    "section": "Statistical Modeling",
+    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
+  },
+  {
+    "objectID": "projects.html#data-visualization",
+    "href": "projects.html#data-visualization",
+    "title": "Projects",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto\nSummary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html",
+    "href": "posts/Home_Field_Advantage.html",
+    "title": "",
+    "section": "",
+    "text": "CodeShow All CodeHide All CodeView Source\nTitle: “Analyzing NFL Home Field Advantage” format: html"
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#introduction",
+    "href": "posts/Home_Field_Advantage.html#introduction",
+    "title": "",
+    "section": "Introduction",
+    "text": "Introduction\nHome field advantage in the NFL refers to the tendency for teams to perform better when playing at their home stadium. This analysis examines how home field advantage has evolved from 2010 to 2024 by looking at two key metrics: home team win percentage and average point differential."
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#data",
+    "href": "posts/Home_Field_Advantage.html#data",
+    "title": "",
+    "section": "Data",
+    "text": "Data\nThis analysis uses NFL game data from 2010 to 2024, examining regular season and playoff games to understand trends in home field advantage over time.\n\n\nCode\nimport nfl_data_py as nfl\nfrom lets_plot import *\nimport pandas as pd\nimport seaborn as sns\nLetsPlot.setup_html()\nyears = range(2010, 2025)\ndf_games = nfl.import_schedules(years)\n\n\n\n        \n        \n        \n\n\n\n\nCode\n# identify who won/lost\n# create home_point_diff and home_win columns\ndf_games['home_point_diff'] = df_games['home_score'] - df_games['away_score']\ndf_games['home_win'] = (df_games['home_point_diff'] &gt; 0).astype(int)\n\ndf_hfa = df_games[['season', 'week', 'home_point_diff', 'home_win']]\n\n# Win percentage by season\nwin_pct_by_season = df_hfa.groupby('season')['home_win'].mean() * 100\n\n# Average point differential by season  \navg_diff_by_season = df_hfa.groupby('season')['home_point_diff'].mean()\n\nplot_df_wp = pd.DataFrame({\n    'Season': win_pct_by_season.index,\n    'Win Percentage': win_pct_by_season.values\n})\n\nplot_df_pd = pd.DataFrame({\n    'Season': avg_diff_by_season.index,\n    'Point Difference' : avg_diff_by_season.values\n})"
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#analysis",
+    "href": "posts/Home_Field_Advantage.html#analysis",
+    "title": "",
+    "section": "Analysis",
+    "text": "Analysis\n\nHome Win Percentage Trends\n\n\nCode\np = (ggplot(plot_df_wp, aes(x='Season', y='Win Percentage')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=win_pct_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='NFL Home Field Advantage: Win Percentage by Season (2010-2024)',\n        subtitle='Average Home Team Win Percentage is 55.7%',\n        x='Season',\n        y='Home Win Percentage (%)'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(50, 60) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np\n\n\n   \n   \n\n\nWe can easily see that hoime field advantage does exist, on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans, however neither 2019 nor 2021 was played without fans, so this appears to just be an anomaly. Since we can see that the home team does have an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nPoint Differential Analysis\n\n\nCode\np2 = (ggplot(plot_df_pd, aes(x='Season', y='Point Difference')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=0, linetype='dashed', color='lightblue', size=1)+\n    geom_hline(yintercept=avg_diff_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='Home Team Average Point Differential (2010-2024)',\n        subtitle='The Home Team Wins By 2.1 Points On Average',\n        x='Season',\n        y='Home Win Point Difference'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(-2, 5) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np2\n\n\n   \n   \n\n\nWe can easily see that home field advantage does exist; on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time, while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans. However, neither 2019 nor 2021 was played without fans (the 2020 season was the most impacted), so this appears to be an anomaly. Since we can see that the home team has an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nCode\npd2019 = pd.read_csv('C:\\\\owen-heap-portfolio\\\\assets\\\\point_dif_2019.csv')\n\nprint(pd2019)\n\n\n   Rank          Winning Team  Margin  Score           Losing Team  \\\n0     1      Baltimore Ravens      49  59-10        Miami Dolphins   \n1     2  New England Patriots      43   43-0        Miami Dolphins   \n2     3      Baltimore Ravens      39   45-6      Los Angeles Rams   \n3     4   San Francisco 49ers      38  51-13     Carolina Panthers   \n4     5      Baltimore Ravens      36  49-13    Cincinnati Bengals   \n5     6  Los Angeles Chargers      35  45-10  Jacksonville Jaguars   \n6     7      Baltimore Ravens      34   41-7        Houston Texans   \n7     8  New England Patriots      33   33-0         New York Jets   \n8     9    New Orleans Saints      32  42-10     Carolina Panthers   \n9    10    Indianapolis Colts      32   38-6     Carolina Panthers   \n\n  Home/Away (Winner)          Date  \n0               Away   Sep 8, 2019  \n1               Away  Sep 15, 2019  \n2               Away  Nov 25, 2019  \n3               Home  Oct 27, 2019  \n4               Away  Nov 10, 2019  \n5               Away   Dec 8, 2019  \n6               Home  Nov 17, 2019  \n7               Away  Oct 21, 2019  \n8               Away  Dec 29, 2019  \n9               Home  Dec 22, 2019  \n\n\nWe can see that it does in fact have a similar trend. The average point differential is the home team winning by 2.1 points. We can see the same dip around 2020, but what is even more strange is that the 2019 season had an even lower point differential than 2020 did. The 2019 season had an average point differential of 0.04, which is less than 1/20th of a point. This led me to look into this outlier of 2019 more."
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#conclusions",
+    "href": "posts/Home_Field_Advantage.html#conclusions",
+    "title": "",
+    "section": "Conclusions",
+    "text": "Conclusions\nWe can see that the three biggest wins of the 2019 season in terms of point differential were won by the away team. We can also see that seven of the ten largest wins of this season were won by the away team. These large discrepancies are the reason for such a low average point difference in 2019 compared to other seasons."
   },
   {
     "objectID": "about.html",
