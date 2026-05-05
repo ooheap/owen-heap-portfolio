@@ -157,25 +157,23 @@ ALL_TEAMS = sorted(set(v for v in TEAM_FULL.values()))
 @st.cache_data(ttl=43_200, show_spinner=False)
 def load_pitcher_data() -> pd.DataFrame:
     from pybaseball import pitching_stats
-    import pybaseball
-    pybaseball.cache.enable()
 
-    frames = []
-    for season in (2026, 2025):
+    last_err = ""
+    for season, qual in ((2026, 3), (2025, 20), (2024, 20)):
         try:
-            df = pitching_stats(season, season, qual=5)
+            df = pitching_stats(season, season, qual=qual)
             if df is not None and not df.empty:
                 df["season"] = season
-                frames.append(df)
-                break
-        except Exception:
+                return _process_pitcher_df(df)
+        except Exception as e:
+            last_err = str(e)
             continue
 
-    if not frames:
-        return pd.DataFrame()
+    st.error(f"Could not load pitcher data: {last_err}")
+    return pd.DataFrame()
 
-    df = frames[0]
 
+def _process_pitcher_df(df: pd.DataFrame) -> pd.DataFrame:
     # Normalise column names (FanGraphs can vary slightly)
     df.columns = [c.strip() for c in df.columns]
 
@@ -208,18 +206,17 @@ def load_pitcher_data() -> pd.DataFrame:
 @st.cache_data(ttl=43_200, show_spinner=False)
 def load_team_batting() -> pd.DataFrame:
     from pybaseball import batting_stats_bref
-    import pybaseball
-    pybaseball.cache.enable()
 
-    frames = []
-    for season in (2026, 2025):
+    for season in (2026, 2025, 2024):
         try:
             df = batting_stats_bref(season)
             if df is not None and not df.empty:
-                frames.append(df)
+                frames = [df]
                 break
         except Exception:
             continue
+    else:
+        frames = []
 
     if not frames:
         # Fallback: league-average for every team
