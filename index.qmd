@@ -7,7 +7,7 @@ toc: false
 ```{=html}
 <div class="hero">
   <div class="hero-eyebrow">Data Scientist</div>
-  <h1>Hi, I'm Owen Heap.</h1>
+  <h1>Hi, I'm Owen Heap</h1>
   <p class="hero-subtitle">
     I turn messy data into clear insight — specializing in statistical modeling,
     R programming, and interactive data visualization.
