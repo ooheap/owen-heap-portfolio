@@ -1,0 +1,79 @@
+---
+title: "MLB Strikeout Predictor"
+description: "An interactive app that predicts pitcher strikeout totals using Statcast data, K/9, Whiff%, and opponent batting tendencies."
+categories: [Baseball, Python, Machine Learning, Streamlit]
+date: 2026-05-05
+image: ../assets/mlb-strikeout-preview.png
+format:
+  html:
+    toc: false
+    code-tools: false
+---
+
+## Overview
+
+This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.
+
+**Model inputs:**
+
+- **K/9** — The pitcher's season strikeout rate per nine innings (primary signal)
+- **Whiff% / SwStr%** — Swinging-strike rate, a pitch-quality proxy from Statcast
+- **Opponent K%** — How often the opposing lineup strikes out, relative to the league average
+- **Projected IP** — The pitcher's average innings per start (scales the opportunity)
+
+**Prediction formula:**
+
+$$\hat{K} = \frac{K/9}{9} \times \overline{IP_{GS}} \times \frac{Opp\ K\%}{Lg\ K\%} \times f_{whiff}$$
+
+Confidence range uses Poisson variance scaled by model uncertainty.
+
+---
+
+## Live App
+
+```{=html}
+<!-- ─────────────────────────────────────────────────────────────────
+     Replace YOUR-APP-URL below with your Streamlit Cloud URL after
+     deploying (e.g. https://owen-mlb-ks.streamlit.app).
+     The padding-top % controls height; 75% ≈ 900px on a 1200px screen.
+     ───────────────────────────────────────────────────────────────── -->
+<div style="position:relative; padding-top:75%; border-radius:10px; overflow:hidden; box-shadow:0 4px 24px rgba(26,58,92,0.13); margin:1.5rem 0;">
+  <iframe
+    src="https://YOUR-APP-URL.streamlit.app?embed=true"
+    style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:10px;"
+    allow="fullscreen"
+    loading="lazy"
+    title="MLB Strikeout Predictor">
+  </iframe>
+</div>
+```
+
+---
+
+## Data Sources
+
+| Source | What it provides |
+|---|---|
+| [FanGraphs](https://www.fangraphs.com/) via `pybaseball` | Pitcher K/9, SwStr%, GS, IP |
+| [Baseball Reference](https://www.baseball-reference.com/) via `pybaseball` | Team batting K% and plate appearances |
+
+Data refreshes every 12 hours via Streamlit's cache layer. All stats reflect the current 2026 season; the app falls back to 2025 data for pitchers with fewer than 3 starts.
+
+---
+
+## Deploy Your Own
+
+The source code lives at [`projects/mlb-strikeout-predictor/`](https://github.com/ooheap/owen-heap-portfolio/tree/main/projects/mlb-strikeout-predictor) in this repo.
+
+```bash
+# Run locally
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+To deploy on **Streamlit Cloud**:
+
+1. Go to [share.streamlit.io](https://share.streamlit.io) and connect your GitHub account.
+2. Select this repository, set the **App file path** to `projects/mlb-strikeout-predictor/app.py`.
+3. Click **Deploy** — Streamlit Cloud installs `requirements.txt` automatically.
+4. Copy the generated URL and paste it into the `src` attribute of the `<iframe>` above.
