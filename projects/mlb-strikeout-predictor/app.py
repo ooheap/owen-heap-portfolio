@@ -153,18 +153,76 @@ TEAM_FULL = {
 ALL_TEAMS = sorted(set(v for v in TEAM_FULL.values()))
 
 
+# ── MLB Stats API helpers ──────────────────────────────────────────────────────
+MLB_API = "https://statsapi.mlb.com/api/v1"
+_HEADERS = {"User-Agent": "mlb-strikeout-predictor/1.0"}
+
+
+def _parse_ip(ip_str) -> float:
+    """'58.2' (58 innings + 2 outs) → decimal innings."""
+    try:
+        parts = str(ip_str).split(".")
+        return int(parts[0]) + (int(parts[1]) / 3 if len(parts) > 1 else 0)
+    except Exception:
+        return 0.0
+
+
+def _get(path: str, params: dict) -> dict:
+    import requests
+    r = requests.get(f"{MLB_API}{path}", params=params, headers=_HEADERS, timeout=20)
+    r.raise_for_status()
+    return r.json()
+
+
 # ── Data loading ───────────────────────────────────────────────────────────────
 @st.cache_data(ttl=43_200, show_spinner=False)
 def load_pitcher_data() -> pd.DataFrame:
-    from pybaseball import pitching_stats
-
     last_err = ""
-    for season, qual in ((2026, 3), (2025, 20), (2024, 20)):
+    for season in (2026, 2025, 2024):
         try:
-            df = pitching_stats(season, season, qual=qual)
-            if df is not None and not df.empty:
-                df["season"] = season
-                return _process_pitcher_df(df)
+            data = _get("/stats", {
+                "stats": "season",
+                "playerPool": "All",
+                "position": 1,
+                "sportId": 1,
+                "season": season,
+                "group": "pitching",
+                "gameType": "R",
+                "limit": 1000,
+            })
+            splits = data["stats"][0]["splits"]
+            if not splits:
+                continue
+
+            rows = []
+            for s in splits:
+                st_obj = s.get("stat", {})
+                gs  = int(st_obj.get("gamesStarted", 0))
+                if gs < (3 if season == 2026 else 15):
+                    continue
+                ip  = _parse_ip(st_obj.get("inningsPitched", 0))
+                so  = int(st_obj.get("strikeOuts", 0))
+                bf  = int(st_obj.get("battersFaced", 0))
+                k9  = (so / ip * 9) if ip > 0 else 0.0
+                kpct = (so / bf) if bf > 0 else None
+                rows.append({
+                    "Name":      s.get("player", {}).get("fullName", "Unknown"),
+                    "Team":      s.get("team",   {}).get("name", ""),
+                    "GS":        gs,
+                    "IP":        round(ip, 2),
+                    "K/9":       round(k9, 2),
+                    "K%":        kpct,
+                    "whiff_pct": np.nan,   # not in standard stats API
+                    "ip_per_gs": round(ip / gs, 2) if gs > 0 else AVG_IP_START,
+                    "season":    season,
+                })
+
+            if not rows:
+                continue
+            df = pd.DataFrame(rows).dropna(subset=["K/9"])
+            df = df[df["K/9"] > 0].sort_values("Name").reset_index(drop=True)
+            return df
+
         except Exception as e:
             last_err = str(e)
             continue
@@ -173,77 +231,45 @@ def load_pitcher_data() -> pd.DataFrame:
     return pd.DataFrame()
 
 
-def _process_pitcher_df(df: pd.DataFrame) -> pd.DataFrame:
-    # Normalise column names (FanGraphs can vary slightly)
-    df.columns = [c.strip() for c in df.columns]
-
-    # Keep starters only (GS ≥ 3 for current season, ≥ 15 for full season)
-    min_gs = 3 if df["season"].iloc[0] == 2026 else 15
-    df = df[df["GS"] >= min_gs].copy()
-
-    # Ensure we have the key columns; fill SwStr% alias
-    for alias in ("SwStr%", "Whiff%", "CSW%"):
-        if alias in df.columns:
-            df["whiff_pct"] = pd.to_numeric(df[alias], errors="coerce")
-            break
-    else:
-        df["whiff_pct"] = np.nan
-
-    df["K/9"]  = pd.to_numeric(df.get("K/9",  pd.Series(dtype=float)), errors="coerce")
-    df["K%"]   = pd.to_numeric(df.get("K%",   pd.Series(dtype=float)), errors="coerce")
-    df["IP"]   = pd.to_numeric(df.get("IP",   pd.Series(dtype=float)), errors="coerce")
-    df["GS"]   = pd.to_numeric(df.get("GS",   pd.Series(dtype=float)), errors="coerce")
-    df["ERA"]  = pd.to_numeric(df.get("ERA",  pd.Series(dtype=float)), errors="coerce")
-
-    # Average innings per start
-    df["ip_per_gs"] = (df["IP"] / df["GS"]).fillna(AVG_IP_START).clip(1, 9)
-
-    df = df.dropna(subset=["K/9", "Name"])
-    df = df.sort_values("Name")
-    return df.reset_index(drop=True)
-
-
 @st.cache_data(ttl=43_200, show_spinner=False)
 def load_team_batting() -> pd.DataFrame:
-    from pybaseball import batting_stats_bref
+    fallback = pd.DataFrame({
+        "team_full": ALL_TEAMS,
+        "K%": LEAGUE_KPct,
+    })
 
     for season in (2026, 2025, 2024):
         try:
-            df = batting_stats_bref(season)
-            if df is not None and not df.empty:
-                frames = [df]
-                break
+            data = _get("/teams/stats", {
+                "season": season,
+                "group": "hitting",
+                "stats": "season",
+                "sportId": 1,
+                "gameType": "R",
+            })
+            splits = data["stats"][0]["splits"]
+            if not splits:
+                continue
+
+            rows = []
+            for s in splits:
+                st_obj = s.get("stat", {})
+                so = int(st_obj.get("strikeOuts", 0))
+                pa = int(st_obj.get("plateAppearances", 0))
+                if pa == 0:
+                    continue
+                rows.append({
+                    "team_full": s.get("team", {}).get("name", ""),
+                    "K%": so / pa,
+                })
+
+            if rows:
+                return pd.DataFrame(rows)
+
         except Exception:
             continue
-    else:
-        frames = []
 
-    if not frames:
-        # Fallback: league-average for every team
-        fallback = pd.DataFrame({"Team": list(set(TEAM_FULL.values())), "K%": LEAGUE_KPct})
-        return fallback
-
-    df = frames[0]
-    df.columns = [c.strip() for c in df.columns]
-
-    # Baseball Reference uses 'Tm', not 'Team'
-    team_col = "Tm" if "Tm" in df.columns else "Team"
-
-    # Drop multi-team "TOT" rows
-    df = df[~df[team_col].isin(["TOT", "- - -"])].copy()
-
-    df["SO"] = pd.to_numeric(df.get("SO", pd.Series(dtype=float)), errors="coerce")
-    df["PA"] = pd.to_numeric(df.get("PA", pd.Series(dtype=float)), errors="coerce")
-    df = df.dropna(subset=["SO", "PA"])
-    df = df[df["PA"] > 0]
-
-    agg = df.groupby(team_col, as_index=False).agg(SO=("SO", "sum"), PA=("PA", "sum"))
-    agg["K%"] = agg["SO"] / agg["PA"]
-    agg.rename(columns={team_col: "Team"}, inplace=True)
-
-    # Map abbreviated team names → full names
-    agg["team_full"] = agg["Team"].map(TEAM_FULL).fillna(agg["Team"])
-    return agg
+    return fallback
 
 
 # ── Prediction helpers ─────────────────────────────────────────────────────────
@@ -410,7 +436,7 @@ st.markdown(
     """
 <div class="app-header">
   <h1>⚾ MLB Strikeout Predictor</h1>
-  <p>Powered by FanGraphs &amp; Baseball Reference via pybaseball &nbsp;·&nbsp; 2026 season data</p>
+  <p>Powered by the MLB Stats API &nbsp;·&nbsp; 2026 season data</p>
 </div>
 """,
     unsafe_allow_html=True,
@@ -426,10 +452,7 @@ if pitchers_df.empty:
     st.stop()
 
 # Build team K% lookup (full name → K%)
-team_kpct_map: dict[str, float] = {}
-for _, row in team_batting.iterrows():
-    full = row.get("team_full", row["Team"])
-    team_kpct_map[full] = row["K%"]
+team_kpct_map: dict[str, float] = dict(zip(team_batting["team_full"], team_batting["K%"]))
 
 # Fallback: any teams missing get league average
 for t in ALL_TEAMS:
@@ -460,7 +483,7 @@ if predict_btn or True:   # auto-show on first load
 st.markdown(
     """
 <div class="data-note">
-  Data sourced from FanGraphs &amp; Baseball Reference via pybaseball.
+  Data sourced from the official MLB Stats API (statsapi.mlb.com).
   Predictions are statistical estimates, not guarantees.
   Model: K/9 × projected IP × opponent K% adjustment.
 </div>
