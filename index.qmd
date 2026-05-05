@@ -25,10 +25,10 @@ toc: false
 <div class="card-grid">
 
   <div class="proj-card">
-    <span class="proj-tag">R · ggplot2</span>
-    <h3>Project Title One</h3>
-    <p>A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.</p>
-    <a href="projects.qmd">View project →</a>
+    <span class="proj-tag">Python · Streamlit · MLB API</span>
+    <h3>MLB Strikeout Predictor</h3>
+    <p>Interactive app that predicts pitcher strikeout totals using K/9, opponent K%, and projected innings. Powered by the live MLB Stats API.</p>
+    <a href="posts/mlb-strikeout-predictor.html">View project →</a>
   </div>
 
 <div class="proj-card">
@@ -38,12 +38,7 @@ toc: false
     <a href="posts/Home_Field_Advantage.html">View project →</a>
 </div>
 
-  <div class="proj-card">
-    <span class="proj-tag">Statistics · tidymodels</span>
-    <h3>Project Title Three</h3>
-    <p>Outline a modeling project — what you predicted, the approach you took, and the key result.</p>
-    <a href="projects.qmd">View project →</a>
-  </div>
+
 
 </div>
 ```
