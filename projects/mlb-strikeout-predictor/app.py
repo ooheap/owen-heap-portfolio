@@ -36,13 +36,6 @@ st.markdown(
 /* ── Selects ── */
 .stSelectbox label { font-weight: 600; color: #1a3a5c; font-size: 0.88rem; }
 
-/* ── Predict button ── */
-.stButton > button {
-    background: #2e86ab; color: white; border: none; border-radius: 6px;
-    padding: 0.6rem 2rem; font-weight: 600; font-size: 1rem;
-    width: 100%; transition: background 0.2s;
-}
-.stButton > button:hover { background: #1a3a5c; }
 
 /* ── Prediction card ── */
 .pred-card {
@@ -468,17 +461,13 @@ with col1:
 with col2:
     selected_team = st.selectbox("Opposing Team", ALL_TEAMS, index=0)
 
-st.markdown("<br>", unsafe_allow_html=True)
-predict_btn = st.button("Predict Strikeouts")
-
 # ── Prediction output ──────────────────────────────────────────────────────────
-if predict_btn or True:   # auto-show on first load
-    pitcher_row = pitchers_df[pitchers_df["Name"] == selected_pitcher].iloc[0]
-    team_k_pct  = team_kpct_map.get(selected_team, LEAGUE_KPct)
+pitcher_row = pitchers_df[pitchers_df["Name"] == selected_pitcher].iloc[0]
+team_k_pct  = team_kpct_map.get(selected_team, LEAGUE_KPct)
 
-    result = predict(pitcher_row, team_k_pct)
-    render_prediction(result, selected_pitcher, selected_team)
-    render_factors(result, pitcher_row, pitchers_df, selected_team)
+result = predict(pitcher_row, team_k_pct)
+render_prediction(result, selected_pitcher, selected_team)
+render_factors(result, pitcher_row, pitchers_df, selected_team)
 
 st.markdown(
     """

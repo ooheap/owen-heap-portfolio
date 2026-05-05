@@ -32,11 +32,6 @@ Confidence range uses Poisson variance scaled by model uncertainty.
 ## Live App
 
 ```{=html}
-<!-- ─────────────────────────────────────────────────────────────────
-     Replace YOUR-APP-URL below with your Streamlit Cloud URL after
-     deploying (e.g. https://owen-mlb-ks.streamlit.app).
-     The padding-top % controls height; 75% ≈ 900px on a 1200px screen.
-     ───────────────────────────────────────────────────────────────── -->
 <div style="position:relative; padding-top:75%; border-radius:10px; overflow:hidden; box-shadow:0 4px 24px rgba(26,58,92,0.13); margin:1.5rem 0;">
   <iframe
     src="https://owen-mlb-strikeouts.streamlit.app?embed=true"
