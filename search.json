@@ -18,7 +18,7 @@
     "href": "index.html#tools-skills",
     "title": "",
     "section": "Tools & Skills",
-    "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization\n\n\n\n\n→ See all posts"
+    "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization"
   },
   {
     "objectID": "posts/Home_Field_Advantage.html",
@@ -54,6 +54,69 @@
     "title": "",
     "section": "Conclusions",
     "text": "Conclusions\nWe can see that the three biggest wins of the 2019 season in terms of point differential were won by the away team. We can also see that seven of the ten largest wins of this season were won by the away team. These large discrepancies are the reason for such a low average point difference in 2019 compared to other seasons."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
+  },
+  {
+    "objectID": "projects.html#statistical-modeling",
+    "href": "projects.html#statistical-modeling",
+    "title": "Projects",
+    "section": "Statistical Modeling",
+    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
+  },
+  {
+    "objectID": "projects.html#data-visualization",
+    "href": "projects.html#data-visualization",
+    "title": "Projects",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto\nSummary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "",
+    "section": "Summary",
+    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "",
+    "section": "Education",
+    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
+  },
+  {
+    "objectID": "resume.html#work-experience",
+    "href": "resume.html#work-experience",
+    "title": "",
+    "section": "Work Experience",
+    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
+  },
+  {
+    "objectID": "resume.html#soft-skills",
+    "href": "resume.html#soft-skills",
+    "title": "",
+    "section": "Soft Skills",
+    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
   },
   {
     "objectID": "posts/project-one.html",
@@ -103,76 +166,6 @@
     "title": "Your First Project Write-Up",
     "section": "Takeaways",
     "text": "Takeaways\n\nWhat worked well?\nWhat would you do differently?\nWhat’s the next question this raises?"
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "resume.html#summary",
-    "href": "resume.html#summary",
-    "title": "",
-    "section": "Summary",
-    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "",
-    "section": "Education",
-    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
-  },
-  {
-    "objectID": "resume.html#technical-skills",
-    "href": "resume.html#technical-skills",
-    "title": "",
-    "section": "Technical Skills",
-    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
-  },
-  {
-    "objectID": "resume.html#work-experience",
-    "href": "resume.html#work-experience",
-    "title": "",
-    "section": "Work Experience",
-    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
-  },
-  {
-    "objectID": "resume.html#soft-skills",
-    "href": "resume.html#soft-skills",
-    "title": "",
-    "section": "Soft Skills",
-    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
-  },
-  {
-    "objectID": "projects.html#statistical-modeling",
-    "href": "projects.html#statistical-modeling",
-    "title": "Projects",
-    "section": "Statistical Modeling",
-    "text": "Statistical Modeling\n\nProject Title One\nTools: R, tidymodels, ggplot2\nSummary: Describe the problem, your approach, and the result in 3–4 sentences. What was interesting or challenging about this dataset? What did you learn?\nRead write-up →"
-  },
-  {
-    "objectID": "projects.html#data-visualization",
-    "href": "projects.html#data-visualization",
-    "title": "Projects",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto\nSummary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
-  },
-  {
-    "objectID": "posts/index.html",
-    "href": "posts/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Introduction\n\n\n\n\n\n\n\n5 min\n\n\n\n\n\n\nYour First Project Write-Up\n\n\n\nR\n\nvisualization\n\nstatistics\n\n\n\nA template for writing up a data science project with R code.\n\n\n\n\n\nMar 18, 2026\n\n2 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
