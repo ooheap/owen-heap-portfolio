@@ -11,7 +11,7 @@
     "href": "index.html#featured-projects",
     "title": "",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\n\n  \n    R · ggplot2\n    Project Title One\n    A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.\n    View project →\n  \n\n  \n    R · Shiny\n    Project Title Two\n    Describe the dashboard or app you built — the business or research question it answers and what's interactive.\n    View project →\n  \n\n  \n    Statistics · tidymodels\n    Project Title Three\n    Outline a modeling project — what you predicted, the approach you took, and the key result.\n    View project →"
+    "text": "Featured Projects\n\n\n  \n    R · ggplot2\n    Project Title One\n    A short description of what this project does, what data you used, and what you found. Keep it to 2–3 sentences.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →\n\n\n  \n    Statistics · tidymodels\n    Project Title Three\n    Outline a modeling project — what you predicted, the approach you took, and the key result.\n    View project →"
   },
   {
     "objectID": "index.html#tools-skills",
@@ -172,14 +172,7 @@
     "href": "projects.html#data-visualization",
     "title": "Projects",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto Summary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
-  },
-  {
-    "objectID": "projects.html#add-more-projects",
-    "href": "projects.html#add-more-projects",
-    "title": "Projects",
-    "section": "Add More Projects",
-    "text": "Add More Projects\nCopy any block above and fill in your own details. Each project can link to:\n\nA .qmd file in the posts/ folder (full write-up with code)\nAn external URL (GitHub repo, Shiny app, etc.)\nA rendered dashboard\n\n\nTip: The best portfolio projects show your thinking, not just your code. Include a section on what you tried that didn’t work."
+    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto\nSummary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
   },
   {
     "objectID": "posts/index.html",
