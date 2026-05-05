@@ -65,12 +65,6 @@ toc: false
 </div>
 ```
 
-## Latest Posts
-
-```{=html}
-<!-- Quarto will auto-populate this listing from the posts/ folder -->
-```
-
 ::: {.column-page}
 ```{r}
 #| echo: false
