@@ -71,5 +71,3 @@ toc: false
 #| message: false
 ```
 :::
-
-→ [See all posts](posts/index.qmd)
