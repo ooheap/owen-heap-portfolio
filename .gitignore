@@ -6,3 +6,5 @@
 .RData
 .Ruserdata
 *.Rproj
+
+**/*.quarto_ipynb

@@ -109,7 +109,7 @@ p2
 We can easily see that home field advantage does exist; on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time, while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans. However, neither 2019 nor 2021 was played without fans (the 2020 season was the most impacted), so this appears to be an anomaly. Since we can see that the home team has an edge over their opponents, this made me curious if the point differential would show a similar trend.
 
 ```{python}
-pd2019 = pd.read_csv('point_dif_2019.csv')
+pd2019 = pd.read_csv('C:\\owen-heap-portfolio\\assets\\point_dif_2019.csv')
 
 print(pd2019)
 ```
