@@ -23,7 +23,6 @@ This raises a natural question: *do smaller, lighter receivers get hurt more oft
 #| warning: false
 
 library(tidyverse)
-library(patchwork)
 
 df <- read_csv("../assets/NFL_WR_injury_data.csv") %>%
   rename(Injured_raw = `Season-Ending Injury`) %>%
@@ -104,26 +103,25 @@ Thompson sits well below and to the left of the entire sample. There is no compa
 
 pal_fill <- c("Not Injured" = "#013369", "Season-Ending Injury" = "#D50A0A")
 
-p_h <- ggplot(df, aes(x = Injured, y = Height_in, fill = Injured)) +
-  geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = "white") +
-  scale_fill_manual(values = pal_fill, guide = "none") +
-  scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +
-  labs(title = "Height by Injury Status", x = NULL, y = "Height") +
-  theme_minimal(base_size = 13) +
+box_theme <- theme_minimal(base_size = 13) +
   theme(plot.title = element_text(face = "bold", size = 12))
 
-p_w <- ggplot(df, aes(x = Injured, y = Weight_lbs, fill = Injured)) +
-  geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = "white") +
-  scale_fill_manual(values = pal_fill, guide = "none") +
-  labs(title = "Weight by Injury Status", x = NULL, y = "Weight (lbs)") +
-  theme_minimal(base_size = 13) +
-  theme(plot.title = element_text(face = "bold", size = 12))
+print(
+  ggplot(df, aes(x = Injured, y = Height_in, fill = Injured)) +
+    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = "white") +
+    scale_fill_manual(values = pal_fill, guide = "none") +
+    scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +
+    labs(title = "Height by Injury Status", x = NULL, y = "Height") +
+    box_theme
+)
 
-p_h + p_w +
-  plot_annotation(
-    title = "Physical Size Distribution: Injured vs. Not Injured",
-    theme = theme(plot.title = element_text(face = "bold", size = 14))
-  )
+print(
+  ggplot(df, aes(x = Injured, y = Weight_lbs, fill = Injured)) +
+    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = "white") +
+    scale_fill_manual(values = pal_fill, guide = "none") +
+    labs(title = "Weight by Injury Status", x = NULL, y = "Weight (lbs)") +
+    box_theme
+)
 ```
 
 The medians are close between groups for both height and weight. The injured group shows slightly wider spread — particularly at the upper end of the weight range — but there is no dramatic size difference between the two populations.
@@ -168,33 +166,31 @@ bar_theme <- theme_minimal(base_size = 13) +
     panel.grid.major.x = element_blank()
   )
 
-p_rh <- ggplot(rate_h, aes(x = Height_group, y = rate, fill = rate)) +
-  geom_col(alpha = 0.88, width = 0.55) +
-  geom_text(
-    aes(label = sprintf("%.0f%%\n(n=%d)", rate, n)),
-    vjust = -0.35, fontface = "bold", size = 4
-  ) +
-  scale_fill_gradient(low = "#013369", high = "#D50A0A", guide = "none") +
-  ylim(0, 72) +
-  labs(title = "Injury Rate by Height Group", x = NULL, y = "% with Season-Ending Injury") +
-  bar_theme
+print(
+  ggplot(rate_h, aes(x = Height_group, y = rate, fill = rate)) +
+    geom_col(alpha = 0.88, width = 0.55) +
+    geom_text(
+      aes(label = sprintf("%.0f%%\n(n=%d)", rate, n)),
+      vjust = -0.35, fontface = "bold", size = 4
+    ) +
+    scale_fill_gradient(low = "#013369", high = "#D50A0A", guide = "none") +
+    ylim(0, 72) +
+    labs(title = "Injury Rate by Height Group", x = NULL, y = "% with Season-Ending Injury") +
+    bar_theme
+)
 
-p_rw <- ggplot(rate_w, aes(x = Weight_group, y = rate, fill = rate)) +
-  geom_col(alpha = 0.88, width = 0.55) +
-  geom_text(
-    aes(label = sprintf("%.0f%%\n(n=%d)", rate, n)),
-    vjust = -0.35, fontface = "bold", size = 4
-  ) +
-  scale_fill_gradient(low = "#013369", high = "#D50A0A", guide = "none") +
-  ylim(0, 72) +
-  labs(title = "Injury Rate by Weight Group", x = NULL, y = "% with Season-Ending Injury") +
-  bar_theme
-
-p_rh + p_rw +
-  plot_annotation(
-    title = "Injury Rate by Size Group (split at median)",
-    theme = theme(plot.title = element_text(face = "bold", size = 14))
-  )
+print(
+  ggplot(rate_w, aes(x = Weight_group, y = rate, fill = rate)) +
+    geom_col(alpha = 0.88, width = 0.55) +
+    geom_text(
+      aes(label = sprintf("%.0f%%\n(n=%d)", rate, n)),
+      vjust = -0.35, fontface = "bold", size = 4
+    ) +
+    scale_fill_gradient(low = "#013369", high = "#D50A0A", guide = "none") +
+    ylim(0, 72) +
+    labs(title = "Injury Rate by Weight Group", x = NULL, y = "% with Season-Ending Injury") +
+    bar_theme
+)
 ```
 
 When splitting at the median, a counterintuitive pattern emerges: **taller and heavier receivers show higher injury rates** in this sample. This cuts against the intuition that smaller receivers might be more fragile. That said, the groups are roughly equal in size and the differences are modest — strong conclusions require more data and controls.
