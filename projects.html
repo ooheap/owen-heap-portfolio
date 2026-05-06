@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="custom.scss">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -165,12 +165,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -196,32 +196,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Below are selected projects. Each links to a full write-up with code, methodology, and results.</p>
-<hr>
-<section id="interactive-apps-machine-learning" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-apps-machine-learning">Interactive Apps &amp; Machine Learning</h2>
-<section id="mlb-strikeout-predictor" class="level3">
-<h3 class="anchored" data-anchor-id="mlb-strikeout-predictor">MLB Strikeout Predictor</h3>
-<p><strong>Tools:</strong> Python, Streamlit, MLB Stats API, pandas</p>
-<p><strong>Summary:</strong> A deployed Streamlit app that predicts how many strikeouts a starting pitcher will record against a given opponent. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors: the pitcher’s K/9 rate, projected innings per start, and how often the opposing lineup strikes out relative to the league average. Data is pulled live from the official MLB Stats API and cached for 12 hours.</p>
-<p><a href="posts/mlb-strikeout-predictor.html">View live app &amp; write-up →</a></p>
-<hr>
-</section>
-</section>
-<section id="data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
-<section id="nfl-home-field-advantage-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="nfl-home-field-advantage-analysis">NFL Home Field Advantage Analysis</h3>
-<p><strong>Tools:</strong> Python, nfl_data_py, lets-plot, Quarto</p>
-<p><strong>Summary:</strong> This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.</p>
-<p><a href="docs/posts/Home_Field_Advantage.html">Read write-up →</a></p>
-<hr>
+<div class="card-grid">
+
+  <div class="proj-card">
+    <span class="proj-tag">Python · Streamlit · MLB API</span>
+    <h3 class="anchored">MLB Strikeout Predictor</h3>
+    <p>Predicts pitcher strikeout totals using live MLB Stats API data. Select any 2026 starter and an opponent to get a projected K count.</p>
+    <a href="posts/mlb-strikeout-predictor.html">View project →</a>
+  </div>
+
+  <div class="proj-card">
+    <span class="proj-tag">R · ggplot2 · tidyverse · NFL</span>
+    <h3 class="anchored">NFL WR Injury Analysis</h3>
+    <p>Do smaller receivers get hurt more often? Four ggplot2 visualizations explore size vs. injury rate across 170 receivers — sparked by the Chargers drafting 164-lb Brennan Thompson.</p>
+    <a href="posts/nfl-wr-injury-analysis.html">View project →</a>
+  </div>
+
+  <div class="proj-card">
+    <span class="proj-tag">Python · Lets-Plot · NFL</span>
+    <h3 class="anchored">NFL Home Field Advantage</h3>
+    <p>15 years of NFL scoring data reveal a steady home-team edge — and a strange 2019 anomaly where the advantage nearly vanished.</p>
+    <a href="posts/Home_Field_Advantage.html">View project →</a>
+  </div>
+
+</div>
 
 
 <!-- -->
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -679,33 +681,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Projects"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "A collection of data science projects"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Below are selected projects. Each links to a full write-up with code, methodology, and results.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="card-grid"&gt;</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interactive Apps &amp; Machine Learning</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### MLB Strikeout Predictor</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>**Tools:** Python, Streamlit, MLB Stats API, pandas</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>**Summary:** A deployed Streamlit app that predicts how many strikeouts a starting pitcher will record against a given opponent. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors: the pitcher's K/9 rate, projected innings per start, and how often the opposing lineup strikes out relative to the league average. Data is pulled live from the official MLB Stats API and cached for 12 hours.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="proj-card"&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;span class="proj-tag"&gt;Python · Streamlit · MLB API&lt;/span&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;h3&gt;MLB Strikeout Predictor&lt;/h3&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;p&gt;Predicts pitcher strikeout totals using live MLB Stats API data. Select any 2026 starter and an opponent to get a projected K count.&lt;/p&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;a href="posts/mlb-strikeout-predictor.html"&gt;View project →&lt;/a&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;/div&gt;</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">View live app &amp; write-up →</span><span class="co">](posts/mlb-strikeout-predictor.html)</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Visualization</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### NFL Home Field Advantage Analysis</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>**Tools:** Python, nfl_data_py, lets-plot, Quarto </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>**Summary:** This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the "2019 anomaly," where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Read write-up →</span><span class="co">](docs/posts/Home_Field_Advantage.html)</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>---</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="proj-card"&gt;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;span class="proj-tag"&gt;R · ggplot2 · tidyverse · NFL&lt;/span&gt;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;h3&gt;NFL WR Injury Analysis&lt;/h3&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;p&gt;Do smaller receivers get hurt more often? Four ggplot2 visualizations explore size vs. injury rate across 170 receivers — sparked by the Chargers drafting 164-lb Brennan Thompson.&lt;/p&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;a href="posts/nfl-wr-injury-analysis.html"&gt;View project →&lt;/a&gt;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;/div&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="proj-card"&gt;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;span class="proj-tag"&gt;Python · Lets-Plot · NFL&lt;/span&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;h3&gt;NFL Home Field Advantage&lt;/h3&gt;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;p&gt;15 years of NFL scoring data reveal a steady home-team edge — and a strange 2019 anomaly where the advantage nearly vanished.&lt;/p&gt;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;a href="posts/Home_Field_Advantage.html"&gt;View project →&lt;/a&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;/div&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

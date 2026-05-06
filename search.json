@@ -11,7 +11,7 @@
     "href": "index.html#featured-projects",
     "title": "",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\n\n  \n    Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Interactive app that predicts pitcher strikeout totals using K/9, opponent K%, and projected innings. Powered by the live MLB Stats API.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →"
+    "text": "Featured Projects\n\n\n  \n    Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Interactive app that predicts pitcher strikeout totals using K/9, opponent K%, and projected innings. Powered by the live MLB Stats API.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →\n\n\n  \n    R · ggplot2 · tidyverse · NFL\n    NFL WR Injury Analysis\n    Exploratory analysis of whether height and weight predict season-ending injuries among 170 notable NFL receivers — motivated by the Chargers drafting Brennan Thompson at an extreme 5'9\", 164 lbs.\n    View project →"
   },
   {
     "objectID": "index.html#tools-skills",
@@ -54,6 +54,90 @@
     "title": "MLB Strikeout Predictor",
     "section": "Deploy Your Own",
     "text": "Deploy Your Own\nThe source code lives at projects/mlb-strikeout-predictor/ in this repo.\n# Run locally\npip install -r requirements.txt\nstreamlit run app.py\nTo deploy on Streamlit Cloud:\n\nGo to share.streamlit.io and connect your GitHub account.\nSelect this repository, set the App file path to projects/mlb-strikeout-predictor/app.py.\nClick Deploy — Streamlit Cloud installs requirements.txt automatically.\nCopy the generated URL and paste it into the src attribute of the &lt;iframe&gt; above."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html",
+    "href": "posts/nfl-wr-injury-analysis.html",
+    "title": "NFL WR Injury Analysis",
+    "section": "",
+    "text": "The Los Angeles Chargers made headlines by selecting Brennan Thompson — a wide receiver listed at just 5’9” and 164 lbs — in the 2026 NFL Draft. At those measurements, Thompson is a genuine outlier among NFL wideouts: lighter than any established receiver in recent memory and among the shortest in the league.\nThis raises a natural question: do smaller, lighter receivers get hurt more often? To explore it, I assembled a dataset of 170 notable NFL wide receivers from 2016–2026 and looked at whether physical size correlates with season-ending injury rates. No modeling — just the data and clean visualizations."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#background",
+    "href": "posts/nfl-wr-injury-analysis.html#background",
+    "title": "NFL WR Injury Analysis",
+    "section": "",
+    "text": "The Los Angeles Chargers made headlines by selecting Brennan Thompson — a wide receiver listed at just 5’9” and 164 lbs — in the 2026 NFL Draft. At those measurements, Thompson is a genuine outlier among NFL wideouts: lighter than any established receiver in recent memory and among the shortest in the league.\nThis raises a natural question: do smaller, lighter receivers get hurt more often? To explore it, I assembled a dataset of 170 notable NFL wide receivers from 2016–2026 and looked at whether physical size correlates with season-ending injury rates. No modeling — just the data and clean visualizations."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#data",
+    "href": "posts/nfl-wr-injury-analysis.html#data",
+    "title": "NFL WR Injury Analysis",
+    "section": "Data",
+    "text": "Data\n\n\nCode\nlibrary(tidyverse)\n\ndf &lt;- read_csv(\"../assets/NFL_WR_injury_data.csv\") %&gt;%\n  rename(Injured_raw = `Season-Ending Injury`) %&gt;%\n  mutate(\n    Height_in = {\n      m &lt;- str_match(Height, \"(\\\\d+)'(\\\\d+)\")\n      as.numeric(m[, 2]) * 12 + as.numeric(m[, 3])\n    },\n    Weight_lbs = as.numeric(str_extract(Weight, \"\\\\d+\")),\n    Injured = if_else(Injured_raw, \"Season-Ending Injury\", \"Not Injured\"),\n    Injured = factor(Injured, levels = c(\"Not Injured\", \"Season-Ending Injury\"))\n  )\n\nbrennan &lt;- df %&gt;% filter(Player == \"Brennan Thompson\")\n\ncat(sprintf(\n  \"Dataset: %d receivers | %d with season-ending injuries (%.0f%%)\\n\",\n  nrow(df), sum(df$Injured_raw), mean(df$Injured_raw) * 100\n))\n\n\nDataset: 166 receivers | 74 with season-ending injuries (45%)\n\n\nThe dataset covers 166 notable NFL wide receivers with documented injury histories from 2016–2026. Each player is coded as having suffered a season-ending injury (TRUE) or not (FALSE) during that window. Height and weight are parsed from their string formats into numeric values for analysis."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#analysis",
+    "href": "posts/nfl-wr-injury-analysis.html#analysis",
+    "title": "NFL WR Injury Analysis",
+    "section": "Analysis",
+    "text": "Analysis\n\nHeight vs. Weight — Where Does Thompson Fit?\n\n\nCode\npal &lt;- c(\"Not Injured\" = \"#013369\", \"Season-Ending Injury\" = \"#D50A0A\")\n\nfmt_height &lt;- function(x) paste0(x %/% 12, \"'\", x %% 12, '\"')\n\nggplot(\n  df %&gt;% filter(Player != \"Brennan Thompson\"),\n  aes(x = Weight_lbs, y = Height_in, color = Injured)\n) +\n  geom_point(size = 3, alpha = 0.72) +\n  geom_point(\n    data = brennan,\n    aes(x = Weight_lbs, y = Height_in),\n    color = \"#FFB612\", size = 6, shape = 18, inherit.aes = FALSE\n  ) +\n  geom_label(\n    data = brennan,\n    aes(x = Weight_lbs, y = Height_in, label = \"Brennan Thompson\\n5'9\\\", 164 lbs\"),\n    color = \"black\", fill = \"#FFB612\", fontface = \"bold\",\n    size = 3.4, nudge_y = 1.7, nudge_x = 6,\n    inherit.aes = FALSE\n  ) +\n  scale_color_manual(values = pal) +\n  scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +\n  labs(\n    title = \"NFL Wide Receiver Size vs. Injury Status (2016–2026)\",\n    subtitle = \"Brennan Thompson (◆) is the lightest receiver in the sample by a wide margin\",\n    x = \"Weight (lbs)\", y = \"Height\",\n    color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position = \"top\",\n    plot.title = element_text(face = \"bold\"),\n    plot.subtitle = element_text(color = \"gray40\")\n  )\n\n\n\n\n\n\n\n\n\nThompson sits well below and to the left of the entire sample. There is no comparable player in this dataset — at 164 lbs, he is more than 15 lbs lighter than the next lightest receiver. The scatter also shows that injured and non-injured players are broadly intermixed across the size spectrum, with no obvious clustering pattern.\n\n\nDistribution by Injury Status\n\n\nCode\npal_fill &lt;- c(\"Not Injured\" = \"#013369\", \"Season-Ending Injury\" = \"#D50A0A\")\n\nbox_theme &lt;- theme_minimal(base_size = 13) +\n  theme(plot.title = element_text(face = \"bold\", size = 12))\n\nprint(\n  ggplot(df, aes(x = Injured, y = Height_in, fill = Injured)) +\n    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = \"white\") +\n    scale_fill_manual(values = pal_fill, guide = \"none\") +\n    scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +\n    labs(title = \"Height by Injury Status\", x = NULL, y = \"Height\") +\n    box_theme\n)\n\n\n\n\n\n\n\n\n\nCode\nprint(\n  ggplot(df, aes(x = Injured, y = Weight_lbs, fill = Injured)) +\n    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = \"white\") +\n    scale_fill_manual(values = pal_fill, guide = \"none\") +\n    labs(title = \"Weight by Injury Status\", x = NULL, y = \"Weight (lbs)\") +\n    box_theme\n)\n\n\n\n\n\n\n\n\n\nThe medians are close between groups for both height and weight. The injured group shows slightly wider spread — particularly at the upper end of the weight range — but there is no dramatic size difference between the two populations.\n\n\nInjury Rate by Size Group\n\n\nCode\nmed_h &lt;- median(df$Height_in)\nmed_w &lt;- median(df$Weight_lbs)\n\ndf_g &lt;- df %&gt;%\n  mutate(\n    Height_group = if_else(\n      Height_in &gt;= med_h,\n      paste0(\"Tall (≥ \", fmt_height(med_h), \")\"),\n      paste0(\"Short (&lt; \", fmt_height(med_h), \")\")\n    ),\n    Weight_group = if_else(\n      Weight_lbs &gt;= med_w,\n      paste0(\"Heavy (≥ \", med_w, \" lbs)\"),\n      paste0(\"Light (&lt; \", med_w, \" lbs)\")\n    )\n  )\n\nrate_h &lt;- df_g %&gt;%\n  group_by(Height_group) %&gt;%\n  summarize(rate = mean(Injured_raw) * 100, n = n(), .groups = \"drop\") %&gt;%\n  mutate(Height_group = fct_reorder(Height_group, -rate))\n\nrate_w &lt;- df_g %&gt;%\n  group_by(Weight_group) %&gt;%\n  summarize(rate = mean(Injured_raw) * 100, n = n(), .groups = \"drop\") %&gt;%\n  mutate(Weight_group = fct_reorder(Weight_group, -rate))\n\nbar_theme &lt;- theme_minimal(base_size = 13) +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 12),\n    panel.grid.major.x = element_blank()\n  )\n\nprint(\n  ggplot(rate_h, aes(x = Height_group, y = rate, fill = rate)) +\n    geom_col(alpha = 0.88, width = 0.55) +\n    geom_text(\n      aes(label = sprintf(\"%.0f%%\\n(n=%d)\", rate, n)),\n      vjust = -0.35, fontface = \"bold\", size = 4\n    ) +\n    scale_fill_gradient(low = \"#013369\", high = \"#D50A0A\", guide = \"none\") +\n    ylim(0, 72) +\n    labs(title = \"Injury Rate by Height Group\", x = NULL, y = \"% with Season-Ending Injury\") +\n    bar_theme\n)\n\n\n\n\n\n\n\n\n\nCode\nprint(\n  ggplot(rate_w, aes(x = Weight_group, y = rate, fill = rate)) +\n    geom_col(alpha = 0.88, width = 0.55) +\n    geom_text(\n      aes(label = sprintf(\"%.0f%%\\n(n=%d)\", rate, n)),\n      vjust = -0.35, fontface = \"bold\", size = 4\n    ) +\n    scale_fill_gradient(low = \"#013369\", high = \"#D50A0A\", guide = \"none\") +\n    ylim(0, 72) +\n    labs(title = \"Injury Rate by Weight Group\", x = NULL, y = \"% with Season-Ending Injury\") +\n    bar_theme\n)\n\n\n\n\n\n\n\n\n\nWhen splitting at the median, a counterintuitive pattern emerges: taller and heavier receivers show higher injury rates in this sample. This cuts against the intuition that smaller receivers might be more fragile. That said, the groups are roughly equal in size and the differences are modest — strong conclusions require more data and controls.\n\n\nWeight Distribution: Injured vs. Not Injured\n\n\nCode\nggplot(df, aes(x = Weight_lbs, fill = Injured, color = Injured)) +\n  geom_density(alpha = 0.35, linewidth = 1) +\n  geom_vline(\n    xintercept = brennan$Weight_lbs,\n    linetype = \"dashed\", color = \"#B8860B\", linewidth = 1\n  ) +\n  annotate(\n    \"text\", x = brennan$Weight_lbs + 3, y = 0.025,\n    label = \"Thompson\\n164 lbs\", hjust = 0,\n    color = \"#8B6914\", fontface = \"bold\", size = 3.6\n  ) +\n  scale_fill_manual(values = pal_fill) +\n  scale_color_manual(values = pal_fill) +\n  labs(\n    title = \"Weight Distribution: Injured vs. Not Injured Receivers\",\n    subtitle = \"Brennan Thompson falls well below the bulk of both distributions\",\n    x = \"Weight (lbs)\", y = \"Density\",\n    fill = NULL, color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position = \"top\",\n    plot.title = element_text(face = \"bold\"),\n    plot.subtitle = element_text(color = \"gray40\")\n  )\n\n\n\n\n\n\n\n\n\nBoth distributions peak around 195–215 lbs and overlap substantially — weight alone is not cleanly separating injured from non-injured receivers. Thompson’s 164 lbs sits far to the left of both curves, in territory with no historical precedent in this sample."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#takeaways",
+    "href": "posts/nfl-wr-injury-analysis.html#takeaways",
+    "title": "NFL WR Injury Analysis",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nAt 5’9”, 164 lbs, Brennan Thompson is a genuine outlier — no comparable receiver appears in this sample of 170 notable NFL wideouts over the past decade.\nSize alone does not predict season-ending injuries in this data: the distributions between injured and non-injured groups overlap heavily.\nIf anything, larger receivers show slightly higher injury rates when split at the median, which runs counter to the “fragile small receiver” narrative.\nThe more meaningful concern for Thompson may not be injury frequency but durability at the point of contact — a question this dataset can’t answer without play-type and contact data.\n\nThis is an exploratory, descriptive analysis. With ~170 players and no controls for position role, snap count, age, or playing style, these patterns are observational — not causal."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Predicts pitcher strikeout totals using live MLB Stats API data. Select any 2026 starter and an opponent to get a projected K count.\n    View project →\n  \n\n  \n    R · ggplot2 · tidyverse · NFL\n    NFL WR Injury Analysis\n    Do smaller receivers get hurt more often? Four ggplot2 visualizations explore size vs. injury rate across 170 receivers — sparked by the Chargers drafting 164-lb Brennan Thompson.\n    View project →\n  \n\n  \n    Python · Lets-Plot · NFL\n    NFL Home Field Advantage\n    15 years of NFL scoring data reveal a steady home-team edge — and a strange 2019 anomaly where the advantage nearly vanished.\n    View project →"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "",
+    "section": "Summary",
+    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "",
+    "section": "Education",
+    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
+  },
+  {
+    "objectID": "resume.html#work-experience",
+    "href": "resume.html#work-experience",
+    "title": "",
+    "section": "Work Experience",
+    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
+  },
+  {
+    "objectID": "resume.html#soft-skills",
+    "href": "resume.html#soft-skills",
+    "title": "",
+    "section": "Soft Skills",
+    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
   },
   {
     "objectID": "posts/project-one.html",
@@ -103,69 +187,6 @@
     "title": "Your First Project Write-Up",
     "section": "Takeaways",
     "text": "Takeaways\n\nWhat worked well?\nWhat would you do differently?\nWhat’s the next question this raises?"
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "resume.html#summary",
-    "href": "resume.html#summary",
-    "title": "",
-    "section": "Summary",
-    "text": "Summary\nData-driven problem solver skilled in SQL, data visualization, and clear communication. Strong at turning analysis into actionable insights and contributing to team results."
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "",
-    "section": "Education",
-    "text": "Education\nB.S. in Data Science · Brigham Young University – Idaho, Rexburg, ID January 2024 – Present\n\nGPA: 3.9"
-  },
-  {
-    "objectID": "resume.html#technical-skills",
-    "href": "resume.html#technical-skills",
-    "title": "",
-    "section": "Technical Skills",
-    "text": "Technical Skills\n\n\n\n\n\n\n\nArea\nTools & Technologies\n\n\n\n\nData Analysis & Statistics\nRegression analysis, hypothesis testing, data validation\n\n\nData Visualization\nTableau, R, Python\n\n\nOther\nExcel, GitHub, SQL"
-  },
-  {
-    "objectID": "resume.html#work-experience",
-    "href": "resume.html#work-experience",
-    "title": "",
-    "section": "Work Experience",
-    "text": "Work Experience\nVideo Team Operator · Becklar, Rexburg, ID January 2026 – Present\n\nMonitor live video feeds to identify unusual activity, safety concerns, and policy violations in real time\nRecord data with clear summaries to support follow-up actions and reporting\nCommunicate information to supervisors and on-site teams to ensure fast, coordinated responses\n\n\nCampus Life Team Member · Brigham Young University-Idaho, Rexburg, ID April 2024 – September 2025\n\nCoordinated and set up campus-wide events for students\nGained experience in a fast-paced environment by quickly learning new processes and systems\nCommunicated with customers, supervisors, and team members\n\n\nFront Desk Receptionist · Mount Woodson Golf Club, Ramona, CA January 2021 – December 2021\n\nGreeted and welcomed guests, providing a positive first impression\nScheduled appointments and maintained an organized calendar for multiple staff members\nProvided administrative support including data entry and filing"
-  },
-  {
-    "objectID": "resume.html#soft-skills",
-    "href": "resume.html#soft-skills",
-    "title": "",
-    "section": "Soft Skills",
-    "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Below are selected projects. Each links to a full write-up with code, methodology, and results."
-  },
-  {
-    "objectID": "projects.html#interactive-apps-machine-learning",
-    "href": "projects.html#interactive-apps-machine-learning",
-    "title": "Projects",
-    "section": "Interactive Apps & Machine Learning",
-    "text": "Interactive Apps & Machine Learning\n\nMLB Strikeout Predictor\nTools: Python, Streamlit, MLB Stats API, pandas\nSummary: A deployed Streamlit app that predicts how many strikeouts a starting pitcher will record against a given opponent. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors: the pitcher’s K/9 rate, projected innings per start, and how often the opposing lineup strikes out relative to the league average. Data is pulled live from the official MLB Stats API and cached for 12 hours.\nView live app & write-up →"
-  },
-  {
-    "objectID": "projects.html#data-visualization",
-    "href": "projects.html#data-visualization",
-    "title": "Projects",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nNFL Home Field Advantage Analysis\nTools: Python, nfl_data_py, lets-plot, Quarto\nSummary: This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the “2019 anomaly,” where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.\nRead write-up →"
   },
   {
     "objectID": "posts/Home_Field_Advantage.html",
