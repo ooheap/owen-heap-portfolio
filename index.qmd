@@ -9,7 +9,7 @@ toc: false
   <div class="hero-eyebrow">Data Scientist</div>
   <h1>Hi, I'm Owen Heap</h1>
   <p class="hero-subtitle">
-    I turn messy data into clear insight — specializing in statistical modeling,
+    I turn messy data into clear insight, specializing in statistical modeling,
     R programming, and interactive data visualization.
   </p>
   <div class="hero-btns">
@@ -55,12 +55,12 @@ toc: false
 ```{=html}
 <div class="skills-strip">
   <span class="skill-pill">R</span>
+  <span class="skill-pill">Python</span>
   <span class="skill-pill">ggplot2</span>
   <span class="skill-pill">tidyverse</span>
-  <span class="skill-pill">tidymodels</span>
-  <span class="skill-pill">Shiny</span>
+  <span class="skill-pill">Streamlit</span>
+  <span class="skill-pill">pandas</span>
   <span class="skill-pill">Quarto</span>
-  <span class="skill-pill">R Markdown</span>
   <span class="skill-pill">SQL</span>
   <span class="skill-pill">Statistics</span>
   <span class="skill-pill">Data Visualization</span>
