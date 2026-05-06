@@ -18,7 +18,7 @@
     "href": "index.html#tools-skills",
     "title": "",
     "section": "Tools & Skills",
-    "text": "Tools & Skills\n\n  R\n  ggplot2\n  tidyverse\n  tidymodels\n  Shiny\n  Quarto\n  R Markdown\n  SQL\n  Statistics\n  Data Visualization"
+    "text": "Tools & Skills\n\n  R\n  Python\n  ggplot2\n  tidyverse\n  Streamlit\n  pandas\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
   },
   {
     "objectID": "posts/mlb-strikeout-predictor.html",
