@@ -2,40 +2,32 @@
 title: "Projects"
 description: "A collection of data science projects"
 toc: false
+page-layout: full
 ---
 
-Below are selected projects. Each links to a full write-up with code, methodology, and results.
+```{=html}
+<div class="card-grid">
 
----
+  <div class="proj-card">
+    <span class="proj-tag">Python · Streamlit · MLB API</span>
+    <h3>MLB Strikeout Predictor</h3>
+    <p>Predicts pitcher strikeout totals using live MLB Stats API data. Select any 2026 starter and an opponent to get a projected K count.</p>
+    <a href="posts/mlb-strikeout-predictor.html">View project →</a>
+  </div>
 
-## Interactive Apps & Machine Learning
+  <div class="proj-card">
+    <span class="proj-tag">R · ggplot2 · tidyverse · NFL</span>
+    <h3>NFL WR Injury Analysis</h3>
+    <p>Do smaller receivers get hurt more often? Four ggplot2 visualizations explore size vs. injury rate across 170 receivers — sparked by the Chargers drafting 164-lb Brennan Thompson.</p>
+    <a href="posts/nfl-wr-injury-analysis.html">View project →</a>
+  </div>
 
-### MLB Strikeout Predictor
-**Tools:** Python, Streamlit, MLB Stats API, pandas
+  <div class="proj-card">
+    <span class="proj-tag">Python · Lets-Plot · NFL</span>
+    <h3>NFL Home Field Advantage</h3>
+    <p>15 years of NFL scoring data reveal a steady home-team edge — and a strange 2019 anomaly where the advantage nearly vanished.</p>
+    <a href="posts/Home_Field_Advantage.html">View project →</a>
+  </div>
 
-**Summary:** A deployed Streamlit app that predicts how many strikeouts a starting pitcher will record against a given opponent. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors: the pitcher's K/9 rate, projected innings per start, and how often the opposing lineup strikes out relative to the league average. Data is pulled live from the official MLB Stats API and cached for 12 hours.
-
-[View live app & write-up →](posts/mlb-strikeout-predictor.html)
-
----
-
-## Data Visualization
-
-### NFL WR Injury Analysis
-**Tools:** R, ggplot2, tidyverse, patchwork
-
-**Summary:** An exploratory visual analysis of whether physical size — height and weight — is associated with season-ending injuries among 170 notable NFL wide receivers from 2016–2026. Motivated by the Chargers selecting Brennan Thompson (5'9", 164 lbs) in the 2026 Draft, I built four ggplot2 visualizations: a size scatter plot highlighting Thompson as an extreme outlier, side-by-side box plots comparing distributions by injury status, injury-rate bar charts split at the median for both dimensions, and density overlays of the weight distribution for injured vs. non-injured players. The data shows no clear size penalty — if anything, larger receivers trend slightly higher in injury rate.
-
-[Read write-up →](posts/nfl-wr-injury-analysis.html)
-
----
-
-### NFL Home Field Advantage Analysis
-**Tools:** Python, nfl_data_py, lets-plot, Quarto 
-
-**Summary:** This project analyzes 15 years of NFL game data to quantify home field advantage and identify historical outliers. I focused the visualizations on two key metrics: win percentage (averaging 55.7%) and point differential (averaging 2.1 points). The design utilizes a consistent NFL-inspired color scheme and horizontal benchmarks to quickly communicate how a specific season compares to the historical average. I specifically used line plots to highlight the "2019 anomaly," where the point differential dropped to nearly zero, prompting a deeper investigation into away-team blowout victories that year.
-
-[Read write-up →](docs/posts/Home_Field_Advantage.html)
-
----
-
+</div>
+```
