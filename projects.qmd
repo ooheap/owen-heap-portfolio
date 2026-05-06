@@ -21,6 +21,15 @@ Below are selected projects. Each links to a full write-up with code, methodolog
 
 ## Data Visualization
 
+### NFL WR Injury Analysis
+**Tools:** R, ggplot2, tidyverse, patchwork
+
+**Summary:** An exploratory visual analysis of whether physical size — height and weight — is associated with season-ending injuries among 170 notable NFL wide receivers from 2016–2026. Motivated by the Chargers selecting Brennan Thompson (5'9", 164 lbs) in the 2026 Draft, I built four ggplot2 visualizations: a size scatter plot highlighting Thompson as an extreme outlier, side-by-side box plots comparing distributions by injury status, injury-rate bar charts split at the median for both dimensions, and density overlays of the weight distribution for injured vs. non-injured players. The data shows no clear size penalty — if anything, larger receivers trend slightly higher in injury rate.
+
+[Read write-up →](posts/nfl-wr-injury-analysis.html)
+
+---
+
 ### NFL Home Field Advantage Analysis
 **Tools:** Python, nfl_data_py, lets-plot, Quarto 
 
