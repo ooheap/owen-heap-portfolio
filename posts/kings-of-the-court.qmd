@@ -1,0 +1,127 @@
+---
+title: "Kings of the Court"
+description: "219,000 shots from the 2025-26 NBA regular season mapped to 12 court zones — an animated matplotlib visualization that crowns the most efficient shooter in every area of the floor."
+categories: [NBA, Python, matplotlib, Data Visualization, Sports Analytics]
+date: 2026-05-20
+format:
+  html:
+    toc: true
+    code-fold: true
+    code-tools: false
+---
+
+## Overview
+
+Who shoots best from each zone? I pulled every field-goal attempt from the 2025-26 NBA regular season — 219,160 shots across all 30 teams — and split the half-court into 12 distinct zones. For each zone, the player with the highest FG% (minimum qualifying attempts) is crowned the zone leader and visualized with an animated shot-arc reveal.
+
+The result is a 28-second animation that cycles through all 12 zones, drawing the leader's made shots as neon-green Bézier arcs growing from the shot location to the basket, then retracting before moving to the next zone.
+
+---
+
+## The Animation
+
+```{=html}
+<video
+  src="../assets/kings_of_the_court.mp4"
+  autoplay loop muted playsinline
+  style="width:100%; max-width:560px; display:block; margin:1.5rem auto; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.5);">
+</video>
+```
+
+---
+
+## Zone Design
+
+The half-court is divided into 12 zones — 5 three-point, 4 mid-range, and 3 paint:
+
+```{=html}
+<div style="overflow-x:auto;">
+<table style="width:100%; border-collapse:collapse; font-size:0.92em;">
+  <thead>
+    <tr style="border-bottom:1px solid #444;">
+      <th style="text-align:left; padding:6px 12px;">Zone</th>
+      <th style="text-align:left; padding:6px 12px;">Type</th>
+      <th style="text-align:left; padding:6px 12px;">Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:5px 12px;">Left Corner 3</td><td>3-point</td><td>x ≤ −220, y ≤ 140</td></tr>
+    <tr><td style="padding:5px 12px;">Left Wing 3</td><td>3-point</td><td>Left side, above the break, angle &lt; −20°</td></tr>
+    <tr><td style="padding:5px 12px;">Top of Key 3</td><td>3-point</td><td>Center, above the break, within ±20°</td></tr>
+    <tr><td style="padding:5px 12px;">Right Wing 3</td><td>3-point</td><td>Right side, above the break, angle &gt; 20°</td></tr>
+    <tr><td style="padding:5px 12px;">Right Corner 3</td><td>3-point</td><td>x ≥ 220, y ≤ 140</td></tr>
+    <tr><td style="padding:5px 12px;">Left Baseline Mid</td><td>Mid-range</td><td>Left of paint, y ≤ 140, inside arc</td></tr>
+    <tr><td style="padding:5px 12px;">Left Elbow Mid</td><td>Mid-range</td><td>Left of paint, y &gt; 140, inside arc</td></tr>
+    <tr><td style="padding:5px 12px;">Right Elbow Mid</td><td>Mid-range</td><td>Right of paint, y &gt; 140, inside arc</td></tr>
+    <tr><td style="padding:5px 12px;">Right Baseline Mid</td><td>Mid-range</td><td>Right of paint, y ≤ 140, inside arc</td></tr>
+    <tr><td style="padding:5px 12px;">Upper Paint</td><td>Paint</td><td>In paint, y &gt; 140 (free-throw lane)</td></tr>
+    <tr><td style="padding:5px 12px;">Paint</td><td>Paint</td><td>In paint, 40 &lt; y ≤ 140 (mid-block)</td></tr>
+    <tr><td style="padding:5px 12px;">Restricted Area</td><td>Paint</td><td>In paint, y ≤ 40 (at the rim)</td></tr>
+  </tbody>
+</table>
+</div>
+```
+
+Coordinates use the NBA's `ShotChartDetail` system: basket at (0, 0), units in tenths of feet. The 3-point arc has radius 237.5 units (23.75 ft); corners are at x = ±220 (22 ft).
+
+---
+
+## Zone Leaders
+
+| Zone | Leader | FGM / FGA | FG% |
+|------|--------|-----------|-----|
+| Left Corner 3 | Bobby Portis | 40 / 80 | 50.0% |
+| Left Wing 3 | Duncan Robinson | 58 / 116 | 50.0% |
+| Top of Key 3 | Ryan Rollins | 50 / 110 | 45.5% |
+| Right Wing 3 | Jamal Murray | 55 / 107 | 51.4% |
+| Right Corner 3 | Kon Knueppel | 41 / 80 | 51.3% |
+| Left Baseline Mid | Tobias Harris | 32 / 55 | 58.2% |
+| Left Elbow Mid | Shai Gilgeous-Alexander | 15 / 26 | 57.7% |
+| Right Elbow Mid | Andrew Nembhard | 14 / 21 | 66.7% |
+| Right Baseline Mid | Donovan Mitchell | 42 / 66 | 63.6% |
+| Upper Paint | Kevin Durant | 53 / 96 | 55.2% |
+| Paint | Kevin Durant | 200 / 334 | 59.9% |
+| Restricted Area | Jericho Sims | 138 / 168 | 82.1% |
+
+Minimum qualifying attempts vary by zone (75 for 3-point and paint zones; 20–35 for mid-range, which is scarce in the modern NBA).
+
+---
+
+## How It Works
+
+### 1 — Data collection
+
+Shot data comes from the NBA's `ShotChartDetail` endpoint via `nba_api`. I loop through all 30 teams with `player_id=0` (all players) and a 0.6 s sleep between requests to avoid rate limits. The full dataset is cached as a Parquet file.
+
+```python
+from nba_api.stats.endpoints import shotchartdetail
+
+resp = shotchartdetail.ShotChartDetail(
+    team_id=team_id,
+    player_id=0,
+    season_nullable="2025-26",
+    season_type_all_star="Regular Season",
+    context_measure_simple="FGA",
+)
+df = resp.get_data_frames()[0]
+```
+
+### 2 — Zone assignment
+
+Each shot is assigned a zone by a pure-geometry function using `LOC_X` and `LOC_Y`. Corner 3s are detected first (|x| ≥ 220, y ≤ 140), then above-the-break 3s (distance from rim ≥ 237.5), then paint zones by y-cutoff, then mid-range by side and height.
+
+### 3 — Finding leaders
+
+For each zone, shots are grouped by player, FG% is computed, and the player with the highest FG% above the minimum-attempts threshold is selected.
+
+### 4 — Animation
+
+The animation is built with `matplotlib.animation.FuncAnimation`. Each zone gets a 66-frame slot (~2.2 s at 30 fps):
+
+- **Frames 0–7**: zone highlights, player name and stats appear
+- **Frames 8–29**: Bézier arcs grow from shot location → basket
+- **Frames 30–43**: full arcs held visible
+- **Frames 44–59**: arcs retract basket → shot location
+- **Frame 60**: arcs fade, zone dims
+
+The Bézier control point is placed 30% of the shot distance above the straight-line path, making the trajectory read clearly as traveling *into* the rim. The active zone is highlighted by a precomputed RGBA grid rendered with `imshow`.
