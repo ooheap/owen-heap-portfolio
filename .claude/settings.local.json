@@ -1,7 +1,20 @@
 {
   "permissions": {
     "allow": [
-      "Bash(Get-ChildItem -Path \"c:\\\\owen-heap-portfolio\" -Force)"
+      "Bash(Get-ChildItem -Path \"c:\\\\owen-heap-portfolio\" -Force)",
+      "Bash(pip --version)",
+      "Bash(dir \"c:\\\\owen-heap-portfolio\")",
+      "Bash(dir \"c:\\\\owen-heap-portfolio\\\\projects\")",
+      "Bash(mkdir \"c:\\\\owen-heap-portfolio\\\\projects\\\\nba-kings-of-the-court\" 2>&1)",
+      "Bash(.venv/Scripts/python 01_pull_shots.py)",
+      "Bash(.venv/Scripts/python 02_zones_and_leaders.py)",
+      "Bash(where ffmpeg *)",
+      "Bash(Get-Command ffmpeg *)",
+      "Bash(Select-Object -ExpandProperty Source)",
+      "Read(//c/Users/oohea/AppData/Local/Microsoft/WinGet/**)"
+    ],
+    "additionalDirectories": [
+      "c:\\owen-heap-portfolio\\projects"
     ]
   }
 }
