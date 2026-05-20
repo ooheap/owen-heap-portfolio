@@ -53,8 +53,10 @@ def assign_zone(x: float, y: float) -> str:
     # Corner 3: y <= CORNER_Y_LIMIT and |x| >= CORNER_3_X
     if y <= CORNER_Y_LIMIT and abs(x) >= CORNER_3_X:
         return "Left Corner 3" if x < 0 else "Right Corner 3"
-    # Above-the-break 3: distance from rim >= ARC_3_RADIUS (and not a corner)
-    if dist >= ARC_3_RADIUS and y > CORNER_Y_LIMIT:
+    # Above-the-break 3: distance from rim >= ARC_3_RADIUS (and not a corner).
+    # No y > CORNER_Y_LIMIT guard — that left a narrow outside-arc band incorrectly
+    # assigned to mid-range zones between the corner line and the arc.
+    if dist >= ARC_3_RADIUS:
         # Split into 3 wedges by angle: left wing, top of key, right wing
         if angle < -20:
             return "Left Wing 3"
