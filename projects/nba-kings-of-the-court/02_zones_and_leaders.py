@@ -69,11 +69,14 @@ def assign_zone(x: float, y: float) -> str:
     in_paint = (PAINT_LEFT_X <= x <= PAINT_RIGHT_X) and (-47.5 <= y <= PAINT_TOP_Y)
 
     if in_paint:
-        if dist <= RESTRICTED_RADIUS + 10:
+        # Use y-based rectangular cuts so all three zones are clean rectangles.
+        # Restricted Area: baseline to top of restricted arc (~4 ft = 40 units)
+        if y <= RESTRICTED_RADIUS:
             return "Restricted Area"
-        # Split paint at y=140: upper paint (free-throw lane area) vs lower paint
+        # Upper Paint: free-throw lane area (above 14 ft mark)
         if y > CORNER_Y_LIMIT:
             return "Upper Paint"
+        # Paint: the mid-block strip between restricted area and 14 ft
         return "Paint"
 
     # Mid-range: not paint, inside the arc
