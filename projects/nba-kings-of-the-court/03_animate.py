@@ -29,7 +29,6 @@ WING_ANGLE    = 20          # degrees from the y-axis
 # ── Palette ──────────────────────────────────────────────────────────────────
 BLACK       = "#000000"
 COURT_LINE  = "#3a3a3a"     # dim gray court lines
-ZONE_BNDRY  = "#2a2a2a"     # even dimmer zone dividers
 ACTIVE_RGBA = (0.15, 0.15, 0.15, 0.40)   # dark gray, 40% — same every time
 TEXT_HI     = "#e8e8e8"
 TEXT_LO     = "#555555"
@@ -79,23 +78,6 @@ def draw_court(ax):
     ax.plot([ 250,  250], [-47.5, YMAX], **kw)           # right sideline
 
 
-def draw_zone_lines(ax):
-    """Dashed lines showing the zone boundaries inside the 3pt arc."""
-    kw = dict(color=ZONE_BNDRY, lw=0.9, zorder=5,
-              linestyle=(0, (5, 6)), solid_capstyle="round")
-    # Baseline-mid / elbow-mid divider at y=140
-    ax.plot([-CORNER_3_X, -80], [CORNER_Y_LIMIT, CORNER_Y_LIMIT], **kw)
-    ax.plot([ 80,  CORNER_3_X], [CORNER_Y_LIMIT, CORNER_Y_LIMIT], **kw)
-    # Wing / top-of-key divider: basket → 3pt arc at ±WING_ANGLE from y-axis
-    rad = math.radians(WING_ANGLE)
-    wx  = ARC_3_RADIUS * math.sin(rad)   # ≈ 81.2
-    wy  = ARC_3_RADIUS * math.cos(rad)   # ≈ 223.2
-    ax.plot([0,  wx], [0, wy], **kw)
-    ax.plot([0, -wx], [0, wy], **kw)
-    # Center mid (FT) column: x=±60 from paint top to 3pt arc
-    cy_top = math.sqrt(ARC_3_RADIUS**2 - CENTER_COL_X**2)   # ≈ 229.8
-    ax.plot([ CENTER_COL_X,  CENTER_COL_X], [PAINT_TOP_Y, cy_top], **kw)
-    ax.plot([-CENTER_COL_X, -CENTER_COL_X], [PAINT_TOP_Y, cy_top], **kw)
 
 
 # ── Zone grid (for active-zone fill) ─────────────────────────────────────────
@@ -152,7 +134,6 @@ def animate_zone_leaders(shots_df, leaders_df,
     ax.set_facecolor(BLACK)
 
     draw_court(ax)
-    draw_zone_lines(ax)
 
     ax.set_xlim(-260, 260)
     ax.set_ylim(-60, YTEXT_ZONE + 10)

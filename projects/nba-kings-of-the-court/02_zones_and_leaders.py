@@ -8,7 +8,7 @@ NBA shot coordinates (from ShotChartDetail):
   - Court is 50 ft wide. 3pt line: 23.75 ft (237.5 units) above the break,
     22 ft (220 units) in the corners. Corners end at LOC_Y = 140 (14 ft).
 
-Your 12 zones:
+Your 11 zones:
   THREE-POINT (5):
     1. Left corner 3       (x <= -220, y <= 140, beyond 3pt line)
     2. Left wing 3         (left side, above break, between corner and TOK)
@@ -21,9 +21,8 @@ Your 12 zones:
     8. Free throw / center mid (center, above the paint, inside 3pt)
     9. Right elbow
     10. Right baseline mid
-  PAINT (2):
-    11. High post / far paint  (in the paint but away from rim)
-    12. Restricted area / at the rim
+  PAINT (1):
+    11. Paint — the entire key/lane (x in [-80,80], y in [-47.5,190])
 """
 
 import math
@@ -66,14 +65,12 @@ def assign_zone(x: float, y: float) -> str:
             return "Top of Key 3"
 
     # --- It's a 2-point shot. ---
-    in_paint = (PAINT_LEFT_X <= x <= PAINT_RIGHT_X) and (0 <= y <= PAINT_TOP_Y)
+    # Paint: the entire key/lane — x in [-80,80], y from baseline to FT line.
+    # Use y >= -47.5 so corner-of-the-paint baseline shots are included.
+    in_paint = (PAINT_LEFT_X <= x <= PAINT_RIGHT_X) and (-47.5 <= y <= PAINT_TOP_Y)
 
     if in_paint:
-        # Restricted area: very close to the rim
-        if dist <= RESTRICTED_RADIUS + 10:
-            return "Restricted Area"
-        else:
-            return "High Post / Far Paint"
+        return "Paint"
 
     # Mid-range: not paint, inside the arc
     # Split by side (left/right) and height (baseline / elbow / center)
@@ -103,8 +100,7 @@ ZONE_ORDER = [
     "Center Mid (FT)",
     "Right Elbow Mid",
     "Right Baseline Mid",
-    "High Post / Far Paint",
-    "Restricted Area",
+    "Paint",
 ]
 
 
@@ -161,18 +157,22 @@ if __name__ == "__main__":
     # You'll want different thresholds for different zones.
     # Rim shots are common, corner 3s are rarer.
     min_att = {
-        "Left Corner 3": 40,
-        "Right Corner 3": 40,
-        "Left Wing 3": 75,
-        "Right Wing 3": 75,
-        "Top of Key 3": 100,
-        "Left Baseline Mid": 40,
-        "Right Baseline Mid": 40,
-        "Left Elbow Mid": 25,
-        "Right Elbow Mid": 20,
-        "Center Mid (FT)": 20,
-        "High Post / Far Paint": 50,
-        "Restricted Area": 200,
+        # 3pt zones: high volume, 75 is reasonable
+        "Left Corner 3":  75,
+        "Right Corner 3": 75,
+        "Left Wing 3":    75,
+        "Right Wing 3":   75,
+        "Top of Key 3":   75,
+        # Mid-range: modern NBA shoots these sparingly — max player FGA
+        # in these zones last season was 28-50, so 75 would empty them.
+        # Using realistic ceilings instead.
+        "Left Baseline Mid":  35,
+        "Right Baseline Mid": 35,
+        "Left Elbow Mid":     25,
+        "Right Elbow Mid":    20,
+        "Center Mid (FT)":    20,
+        # Full paint zone: plenty of volume
+        "Paint": 75,
     }
     leaders = find_zone_leaders(df, min_attempts=min_att)
     print(leaders.to_string(index=False))
