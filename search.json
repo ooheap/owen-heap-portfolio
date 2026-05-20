@@ -1,101 +1,38 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
     "section": "",
-    "text": "Code"
+    "text": "I’m studying data science and have a passion for using data to tell compelling stories. I enjoy exploring data, building models, and creating visualizations that help others understand complex information."
   },
   {
-    "objectID": "index.html#featured-projects",
-    "href": "index.html#featured-projects",
-    "title": "",
-    "section": "Featured Projects",
-    "text": "Featured Projects\n\n\n  \n    Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Interactive app that predicts pitcher strikeout totals using K/9, opponent K%, and projected innings. Powered by the live MLB Stats API.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →\n\n\n  \n    R · ggplot2 · tidyverse · NFL\n    NFL WR Injury Analysis\n    Exploratory analysis of whether height and weight predict season-ending injuries among 170 notable NFL receivers — motivated by the Chargers drafting Brennan Thompson at an extreme 5'9\", 164 lbs.\n    View project →"
-  },
-  {
-    "objectID": "index.html#tools-skills",
-    "href": "index.html#tools-skills",
-    "title": "",
-    "section": "Tools & Skills",
-    "text": "Tools & Skills\n\n  R\n  Python\n  ggplot2\n  tidyverse\n  Streamlit\n  pandas\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
-  },
-  {
-    "objectID": "posts/mlb-strikeout-predictor.html",
-    "href": "posts/mlb-strikeout-predictor.html",
-    "title": "MLB Strikeout Predictor",
+    "objectID": "about.html#hi-im-owen-heap",
+    "href": "about.html#hi-im-owen-heap",
+    "title": "About Me",
     "section": "",
-    "text": "This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.\nModel inputs:\n\nK/9 — The pitcher’s season strikeout rate per nine innings (primary signal)\nWhiff% / SwStr% — Swinging-strike rate, a pitch-quality proxy from Statcast\nOpponent K% — How often the opposing lineup strikes out, relative to the league average\nProjected IP — The pitcher’s average innings per start (scales the opportunity)\n\nPrediction formula:\n\\[\\hat{K} = \\frac{K/9}{9} \\times \\overline{IP_{GS}} \\times \\frac{Opp\\ K\\%}{Lg\\ K\\%} \\times f_{whiff}\\]\nConfidence range uses Poisson variance scaled by model uncertainty."
+    "text": "I’m studying data science and have a passion for using data to tell compelling stories. I enjoy exploring data, building models, and creating visualizations that help others understand complex information."
   },
   {
-    "objectID": "posts/mlb-strikeout-predictor.html#overview",
-    "href": "posts/mlb-strikeout-predictor.html#overview",
-    "title": "MLB Strikeout Predictor",
-    "section": "",
-    "text": "This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.\nModel inputs:\n\nK/9 — The pitcher’s season strikeout rate per nine innings (primary signal)\nWhiff% / SwStr% — Swinging-strike rate, a pitch-quality proxy from Statcast\nOpponent K% — How often the opposing lineup strikes out, relative to the league average\nProjected IP — The pitcher’s average innings per start (scales the opportunity)\n\nPrediction formula:\n\\[\\hat{K} = \\frac{K/9}{9} \\times \\overline{IP_{GS}} \\times \\frac{Opp\\ K\\%}{Lg\\ K\\%} \\times f_{whiff}\\]\nConfidence range uses Poisson variance scaled by model uncertainty."
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "Background",
+    "text": "Background\n\nSenior Studying Data Science at Brigham Young University - Idaho\nI love using data to solve problems and tell a story\nCurrently working on improving my skills in machine learning and data visualization through classes and personal projects"
   },
   {
-    "objectID": "posts/mlb-strikeout-predictor.html#live-app",
-    "href": "posts/mlb-strikeout-predictor.html#live-app",
-    "title": "MLB Strikeout Predictor",
-    "section": "Live App",
-    "text": "Live App"
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n  R\n  Pandas\n  ggplot2\n  tidyverse\n  Quarto\n  SQL\n  Statistics\n  Data Visualization\n  Machine Learning"
   },
   {
-    "objectID": "posts/mlb-strikeout-predictor.html#data-sources",
-    "href": "posts/mlb-strikeout-predictor.html#data-sources",
-    "title": "MLB Strikeout Predictor",
-    "section": "Data Sources",
-    "text": "Data Sources\n\n\n\nSource\nWhat it provides\n\n\n\n\nFanGraphs via pybaseball\nPitcher K/9, SwStr%, GS, IP\n\n\nBaseball Reference via pybaseball\nTeam batting K% and plate appearances\n\n\n\nData refreshes every 12 hours via Streamlit’s cache layer. All stats reflect the current 2026 season; the app falls back to 2025 data for pitchers with fewer than 3 starts."
-  },
-  {
-    "objectID": "posts/mlb-strikeout-predictor.html#deploy-your-own",
-    "href": "posts/mlb-strikeout-predictor.html#deploy-your-own",
-    "title": "MLB Strikeout Predictor",
-    "section": "Deploy Your Own",
-    "text": "Deploy Your Own\nThe source code lives at projects/mlb-strikeout-predictor/ in this repo.\n# Run locally\npip install -r requirements.txt\nstreamlit run app.py\nTo deploy on Streamlit Cloud:\n\nGo to share.streamlit.io and connect your GitHub account.\nSelect this repository, set the App file path to projects/mlb-strikeout-predictor/app.py.\nClick Deploy — Streamlit Cloud installs requirements.txt automatically.\nCopy the generated URL and paste it into the src attribute of the &lt;iframe&gt; above."
-  },
-  {
-    "objectID": "posts/nfl-wr-injury-analysis.html",
-    "href": "posts/nfl-wr-injury-analysis.html",
-    "title": "NFL WR Injury Analysis",
-    "section": "",
-    "text": "The Los Angeles Chargers made headlines by selecting Brennan Thompson — a wide receiver listed at just 5’9” and 164 lbs — in the 2026 NFL Draft. At those measurements, Thompson is a genuine outlier among NFL wideouts: lighter than any established receiver in recent memory and among the shortest in the league.\nThis raises a natural question: do smaller, lighter receivers get hurt more often? To explore it, I assembled a dataset of 170 notable NFL wide receivers from 2016–2026 and looked at whether physical size correlates with season-ending injury rates. No modeling — just the data and clean visualizations."
-  },
-  {
-    "objectID": "posts/nfl-wr-injury-analysis.html#background",
-    "href": "posts/nfl-wr-injury-analysis.html#background",
-    "title": "NFL WR Injury Analysis",
-    "section": "",
-    "text": "The Los Angeles Chargers made headlines by selecting Brennan Thompson — a wide receiver listed at just 5’9” and 164 lbs — in the 2026 NFL Draft. At those measurements, Thompson is a genuine outlier among NFL wideouts: lighter than any established receiver in recent memory and among the shortest in the league.\nThis raises a natural question: do smaller, lighter receivers get hurt more often? To explore it, I assembled a dataset of 170 notable NFL wide receivers from 2016–2026 and looked at whether physical size correlates with season-ending injury rates. No modeling — just the data and clean visualizations."
-  },
-  {
-    "objectID": "posts/nfl-wr-injury-analysis.html#data",
-    "href": "posts/nfl-wr-injury-analysis.html#data",
-    "title": "NFL WR Injury Analysis",
-    "section": "Data",
-    "text": "Data\n\n\nCode\nlibrary(tidyverse)\n\ndf &lt;- read_csv(\"../assets/NFL_WR_injury_data.csv\") %&gt;%\n  rename(Injured_raw = `Season-Ending Injury`) %&gt;%\n  mutate(\n    Height_in = {\n      m &lt;- str_match(Height, \"(\\\\d+)'(\\\\d+)\")\n      as.numeric(m[, 2]) * 12 + as.numeric(m[, 3])\n    },\n    Weight_lbs = as.numeric(str_extract(Weight, \"\\\\d+\")),\n    Injured = if_else(Injured_raw, \"Season-Ending Injury\", \"Not Injured\"),\n    Injured = factor(Injured, levels = c(\"Not Injured\", \"Season-Ending Injury\"))\n  )\n\nbrennan &lt;- df %&gt;% filter(Player == \"Brennan Thompson\")\n\ncat(sprintf(\n  \"Dataset: %d receivers | %d with season-ending injuries (%.0f%%)\\n\",\n  nrow(df), sum(df$Injured_raw), mean(df$Injured_raw) * 100\n))\n\n\nDataset: 166 receivers | 74 with season-ending injuries (45%)\n\n\nThe dataset covers 166 notable NFL wide receivers with documented injury histories from 2016–2026. Each player is coded as having suffered a season-ending injury (TRUE) or not (FALSE) during that window. Height and weight are parsed from their string formats into numeric values for analysis."
-  },
-  {
-    "objectID": "posts/nfl-wr-injury-analysis.html#analysis",
-    "href": "posts/nfl-wr-injury-analysis.html#analysis",
-    "title": "NFL WR Injury Analysis",
-    "section": "Analysis",
-    "text": "Analysis\n\nHeight vs. Weight — Where Does Thompson Fit?\n\n\nCode\npal &lt;- c(\"Not Injured\" = \"#013369\", \"Season-Ending Injury\" = \"#D50A0A\")\n\nfmt_height &lt;- function(x) paste0(x %/% 12, \"'\", x %% 12, '\"')\n\nggplot(\n  df %&gt;% filter(Player != \"Brennan Thompson\"),\n  aes(x = Weight_lbs, y = Height_in, color = Injured)\n) +\n  geom_point(size = 3, alpha = 0.72) +\n  geom_point(\n    data = brennan,\n    aes(x = Weight_lbs, y = Height_in),\n    color = \"#FFB612\", size = 6, shape = 18, inherit.aes = FALSE\n  ) +\n  geom_label(\n    data = brennan,\n    aes(x = Weight_lbs, y = Height_in, label = \"Brennan Thompson\\n5'9\\\", 164 lbs\"),\n    color = \"black\", fill = \"#FFB612\", fontface = \"bold\",\n    size = 3.4, nudge_y = 1.7, nudge_x = 6,\n    inherit.aes = FALSE\n  ) +\n  scale_color_manual(values = pal) +\n  scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +\n  labs(\n    title = \"NFL Wide Receiver Size vs. Injury Status (2016–2026)\",\n    subtitle = \"Brennan Thompson (◆) is the lightest receiver in the sample by a wide margin\",\n    x = \"Weight (lbs)\", y = \"Height\",\n    color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position = \"top\",\n    plot.title = element_text(face = \"bold\"),\n    plot.subtitle = element_text(color = \"gray40\")\n  )\n\n\n\n\n\n\n\n\n\nThompson sits well below and to the left of the entire sample. There is no comparable player in this dataset — at 164 lbs, he is more than 15 lbs lighter than the next lightest receiver. The scatter also shows that injured and non-injured players are broadly intermixed across the size spectrum, with no obvious clustering pattern.\n\n\nDistribution by Injury Status\n\n\nCode\npal_fill &lt;- c(\"Not Injured\" = \"#013369\", \"Season-Ending Injury\" = \"#D50A0A\")\n\nbox_theme &lt;- theme_minimal(base_size = 13) +\n  theme(plot.title = element_text(face = \"bold\", size = 12))\n\nprint(\n  ggplot(df, aes(x = Injured, y = Height_in, fill = Injured)) +\n    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = \"white\") +\n    scale_fill_manual(values = pal_fill, guide = \"none\") +\n    scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +\n    labs(title = \"Height by Injury Status\", x = NULL, y = \"Height\") +\n    box_theme\n)\n\n\n\n\n\n\n\n\n\nCode\nprint(\n  ggplot(df, aes(x = Injured, y = Weight_lbs, fill = Injured)) +\n    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = \"white\") +\n    scale_fill_manual(values = pal_fill, guide = \"none\") +\n    labs(title = \"Weight by Injury Status\", x = NULL, y = \"Weight (lbs)\") +\n    box_theme\n)\n\n\n\n\n\n\n\n\n\nThe medians are close between groups for both height and weight. The injured group shows slightly wider spread — particularly at the upper end of the weight range — but there is no dramatic size difference between the two populations.\n\n\nInjury Rate by Size Group\n\n\nCode\nmed_h &lt;- median(df$Height_in)\nmed_w &lt;- median(df$Weight_lbs)\n\ndf_g &lt;- df %&gt;%\n  mutate(\n    Height_group = if_else(\n      Height_in &gt;= med_h,\n      paste0(\"Tall (≥ \", fmt_height(med_h), \")\"),\n      paste0(\"Short (&lt; \", fmt_height(med_h), \")\")\n    ),\n    Weight_group = if_else(\n      Weight_lbs &gt;= med_w,\n      paste0(\"Heavy (≥ \", med_w, \" lbs)\"),\n      paste0(\"Light (&lt; \", med_w, \" lbs)\")\n    )\n  )\n\nrate_h &lt;- df_g %&gt;%\n  group_by(Height_group) %&gt;%\n  summarize(rate = mean(Injured_raw) * 100, n = n(), .groups = \"drop\") %&gt;%\n  mutate(Height_group = fct_reorder(Height_group, -rate))\n\nrate_w &lt;- df_g %&gt;%\n  group_by(Weight_group) %&gt;%\n  summarize(rate = mean(Injured_raw) * 100, n = n(), .groups = \"drop\") %&gt;%\n  mutate(Weight_group = fct_reorder(Weight_group, -rate))\n\nbar_theme &lt;- theme_minimal(base_size = 13) +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 12),\n    panel.grid.major.x = element_blank()\n  )\n\nprint(\n  ggplot(rate_h, aes(x = Height_group, y = rate, fill = rate)) +\n    geom_col(alpha = 0.88, width = 0.55) +\n    geom_text(\n      aes(label = sprintf(\"%.0f%%\\n(n=%d)\", rate, n)),\n      vjust = -0.35, fontface = \"bold\", size = 4\n    ) +\n    scale_fill_gradient(low = \"#013369\", high = \"#D50A0A\", guide = \"none\") +\n    ylim(0, 72) +\n    labs(title = \"Injury Rate by Height Group\", x = NULL, y = \"% with Season-Ending Injury\") +\n    bar_theme\n)\n\n\n\n\n\n\n\n\n\nCode\nprint(\n  ggplot(rate_w, aes(x = Weight_group, y = rate, fill = rate)) +\n    geom_col(alpha = 0.88, width = 0.55) +\n    geom_text(\n      aes(label = sprintf(\"%.0f%%\\n(n=%d)\", rate, n)),\n      vjust = -0.35, fontface = \"bold\", size = 4\n    ) +\n    scale_fill_gradient(low = \"#013369\", high = \"#D50A0A\", guide = \"none\") +\n    ylim(0, 72) +\n    labs(title = \"Injury Rate by Weight Group\", x = NULL, y = \"% with Season-Ending Injury\") +\n    bar_theme\n)\n\n\n\n\n\n\n\n\n\nWhen splitting at the median, a counterintuitive pattern emerges: taller and heavier receivers show higher injury rates in this sample. This cuts against the intuition that smaller receivers might be more fragile. That said, the groups are roughly equal in size and the differences are modest — strong conclusions require more data and controls.\n\n\nWeight Distribution: Injured vs. Not Injured\n\n\nCode\nggplot(df, aes(x = Weight_lbs, fill = Injured, color = Injured)) +\n  geom_density(alpha = 0.35, linewidth = 1) +\n  geom_vline(\n    xintercept = brennan$Weight_lbs,\n    linetype = \"dashed\", color = \"#B8860B\", linewidth = 1\n  ) +\n  annotate(\n    \"text\", x = brennan$Weight_lbs + 3, y = 0.025,\n    label = \"Thompson\\n164 lbs\", hjust = 0,\n    color = \"#8B6914\", fontface = \"bold\", size = 3.6\n  ) +\n  scale_fill_manual(values = pal_fill) +\n  scale_color_manual(values = pal_fill) +\n  labs(\n    title = \"Weight Distribution: Injured vs. Not Injured Receivers\",\n    subtitle = \"Brennan Thompson falls well below the bulk of both distributions\",\n    x = \"Weight (lbs)\", y = \"Density\",\n    fill = NULL, color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position = \"top\",\n    plot.title = element_text(face = \"bold\"),\n    plot.subtitle = element_text(color = \"gray40\")\n  )\n\n\n\n\n\n\n\n\n\nBoth distributions peak around 195–215 lbs and overlap substantially — weight alone is not cleanly separating injured from non-injured receivers. Thompson’s 164 lbs sits far to the left of both curves, in territory with no historical precedent in this sample."
-  },
-  {
-    "objectID": "posts/nfl-wr-injury-analysis.html#takeaways",
-    "href": "posts/nfl-wr-injury-analysis.html#takeaways",
-    "title": "NFL WR Injury Analysis",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nAt 5’9”, 164 lbs, Brennan Thompson is a genuine outlier — no comparable receiver appears in this sample of 170 notable NFL wideouts over the past decade.\nSize alone does not predict season-ending injuries in this data: the distributions between injured and non-injured groups overlap heavily.\nIf anything, larger receivers show slightly higher injury rates when split at the median, which runs counter to the “fragile small receiver” narrative.\nThe more meaningful concern for Thompson may not be injury frequency but durability at the point of contact — a question this dataset can’t answer without play-type and contact data.\n\nThis is an exploratory, descriptive analysis. With ~170 players and no controls for position role, snap count, age, or playing style, these patterns are observational — not causal."
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Predicts pitcher strikeout totals using live MLB Stats API data. Select any 2026 starter and an opponent to get a projected K count.\n    View project →\n  \n\n  \n    R · ggplot2 · tidyverse · NFL\n    NFL WR Injury Analysis\n    Do smaller receivers get hurt more often? Four ggplot2 visualizations explore size vs. injury rate across 170 receivers — sparked by the Chargers drafting 164-lb Brennan Thompson.\n    View project →\n  \n\n  \n    Python · Lets-Plot · NFL\n    NFL Home Field Advantage\n    15 years of NFL scoring data reveal a steady home-team edge — and a strange 2019 anomaly where the advantage nearly vanished.\n    View project →"
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\n📧 ooheap@gmail.com\n🐙 github.com/ooheap\n💼 linkedin.com/in/owen-heap"
   },
   {
     "objectID": "resume.html",
@@ -138,6 +75,111 @@
     "title": "",
     "section": "Soft Skills",
     "text": "Soft Skills\n\n  Analytical problem solving\n  Attention to detail\n  Cross-functional collaboration\n  Written & verbal communication\n  Customer-focused mindset"
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html",
+    "href": "posts/nfl-wr-injury-analysis.html",
+    "title": "NFL WR Injury Analysis",
+    "section": "",
+    "text": "The Los Angeles Chargers made headlines by selecting Brennan Thompson — a wide receiver listed at just 5’9” and 164 lbs — in the 2026 NFL Draft. At those measurements, Thompson is a genuine outlier among NFL wideouts: lighter than any established receiver in recent memory and among the shortest in the league.\nThis raises a natural question: do smaller, lighter receivers get hurt more often? To explore it, I assembled a dataset of 170 notable NFL wide receivers from 2016–2026 and looked at whether physical size correlates with season-ending injury rates. No modeling — just the data and clean visualizations."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#background",
+    "href": "posts/nfl-wr-injury-analysis.html#background",
+    "title": "NFL WR Injury Analysis",
+    "section": "",
+    "text": "The Los Angeles Chargers made headlines by selecting Brennan Thompson — a wide receiver listed at just 5’9” and 164 lbs — in the 2026 NFL Draft. At those measurements, Thompson is a genuine outlier among NFL wideouts: lighter than any established receiver in recent memory and among the shortest in the league.\nThis raises a natural question: do smaller, lighter receivers get hurt more often? To explore it, I assembled a dataset of 170 notable NFL wide receivers from 2016–2026 and looked at whether physical size correlates with season-ending injury rates. No modeling — just the data and clean visualizations."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#data",
+    "href": "posts/nfl-wr-injury-analysis.html#data",
+    "title": "NFL WR Injury Analysis",
+    "section": "Data",
+    "text": "Data\n\n\nCode\nlibrary(tidyverse)\n\ndf &lt;- read_csv(\"../assets/NFL_WR_injury_data.csv\") %&gt;%\n  rename(Injured_raw = `Season-Ending Injury`) %&gt;%\n  mutate(\n    Height_in = {\n      m &lt;- str_match(Height, \"(\\\\d+)'(\\\\d+)\")\n      as.numeric(m[, 2]) * 12 + as.numeric(m[, 3])\n    },\n    Weight_lbs = as.numeric(str_extract(Weight, \"\\\\d+\")),\n    Injured = if_else(Injured_raw, \"Season-Ending Injury\", \"Not Injured\"),\n    Injured = factor(Injured, levels = c(\"Not Injured\", \"Season-Ending Injury\"))\n  )\n\nbrennan &lt;- df %&gt;% filter(Player == \"Brennan Thompson\")\n\ncat(sprintf(\n  \"Dataset: %d receivers | %d with season-ending injuries (%.0f%%)\\n\",\n  nrow(df), sum(df$Injured_raw), mean(df$Injured_raw) * 100\n))\n\n\nDataset: 166 receivers | 74 with season-ending injuries (45%)\n\n\nThe dataset covers 166 notable NFL wide receivers with documented injury histories from 2016–2026. Each player is coded as having suffered a season-ending injury (TRUE) or not (FALSE) during that window. Height and weight are parsed from their string formats into numeric values for analysis."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#analysis",
+    "href": "posts/nfl-wr-injury-analysis.html#analysis",
+    "title": "NFL WR Injury Analysis",
+    "section": "Analysis",
+    "text": "Analysis\n\nHeight vs. Weight — Where Does Thompson Fit?\n\n\nCode\npal &lt;- c(\"Not Injured\" = \"#013369\", \"Season-Ending Injury\" = \"#D50A0A\")\n\nfmt_height &lt;- function(x) paste0(x %/% 12, \"'\", x %% 12, '\"')\n\nggplot(\n  df %&gt;% filter(Player != \"Brennan Thompson\"),\n  aes(x = Weight_lbs, y = Height_in, color = Injured)\n) +\n  geom_point(size = 3, alpha = 0.72) +\n  geom_point(\n    data = brennan,\n    aes(x = Weight_lbs, y = Height_in),\n    color = \"#FFB612\", size = 6, shape = 18, inherit.aes = FALSE\n  ) +\n  geom_label(\n    data = brennan,\n    aes(x = Weight_lbs, y = Height_in, label = \"Brennan Thompson\\n5'9\\\", 164 lbs\"),\n    color = \"black\", fill = \"#FFB612\", fontface = \"bold\",\n    size = 3.4, nudge_y = 1.7, nudge_x = 6,\n    inherit.aes = FALSE\n  ) +\n  scale_color_manual(values = pal) +\n  scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +\n  labs(\n    title = \"NFL Wide Receiver Size vs. Injury Status (2016–2026)\",\n    subtitle = \"Brennan Thompson (◆) is the lightest receiver in the sample by a wide margin\",\n    x = \"Weight (lbs)\", y = \"Height\",\n    color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position = \"top\",\n    plot.title = element_text(face = \"bold\"),\n    plot.subtitle = element_text(color = \"gray40\")\n  )\n\n\n\n\n\n\n\n\n\nThompson sits well below and to the left of the entire sample. There is no comparable player in this dataset — at 164 lbs, he is more than 15 lbs lighter than the next lightest receiver. The scatter also shows that injured and non-injured players are broadly intermixed across the size spectrum, with no obvious clustering pattern.\n\n\nDistribution by Injury Status\n\n\nCode\npal_fill &lt;- c(\"Not Injured\" = \"#013369\", \"Season-Ending Injury\" = \"#D50A0A\")\n\nbox_theme &lt;- theme_minimal(base_size = 13) +\n  theme(plot.title = element_text(face = \"bold\", size = 12))\n\nprint(\n  ggplot(df, aes(x = Injured, y = Height_in, fill = Injured)) +\n    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = \"white\") +\n    scale_fill_manual(values = pal_fill, guide = \"none\") +\n    scale_y_continuous(breaks = seq(66, 78, 2), labels = fmt_height) +\n    labs(title = \"Height by Injury Status\", x = NULL, y = \"Height\") +\n    box_theme\n)\n\n\n\n\n\n\n\n\n\nCode\nprint(\n  ggplot(df, aes(x = Injured, y = Weight_lbs, fill = Injured)) +\n    geom_boxplot(alpha = 0.75, outlier.shape = 21, outlier.fill = \"white\") +\n    scale_fill_manual(values = pal_fill, guide = \"none\") +\n    labs(title = \"Weight by Injury Status\", x = NULL, y = \"Weight (lbs)\") +\n    box_theme\n)\n\n\n\n\n\n\n\n\n\nThe medians are close between groups for both height and weight. The injured group shows slightly wider spread — particularly at the upper end of the weight range — but there is no dramatic size difference between the two populations.\n\n\nInjury Rate by Size Group\n\n\nCode\nmed_h &lt;- median(df$Height_in)\nmed_w &lt;- median(df$Weight_lbs)\n\ndf_g &lt;- df %&gt;%\n  mutate(\n    Height_group = if_else(\n      Height_in &gt;= med_h,\n      paste0(\"Tall (≥ \", fmt_height(med_h), \")\"),\n      paste0(\"Short (&lt; \", fmt_height(med_h), \")\")\n    ),\n    Weight_group = if_else(\n      Weight_lbs &gt;= med_w,\n      paste0(\"Heavy (≥ \", med_w, \" lbs)\"),\n      paste0(\"Light (&lt; \", med_w, \" lbs)\")\n    )\n  )\n\nrate_h &lt;- df_g %&gt;%\n  group_by(Height_group) %&gt;%\n  summarize(rate = mean(Injured_raw) * 100, n = n(), .groups = \"drop\") %&gt;%\n  mutate(Height_group = fct_reorder(Height_group, -rate))\n\nrate_w &lt;- df_g %&gt;%\n  group_by(Weight_group) %&gt;%\n  summarize(rate = mean(Injured_raw) * 100, n = n(), .groups = \"drop\") %&gt;%\n  mutate(Weight_group = fct_reorder(Weight_group, -rate))\n\nbar_theme &lt;- theme_minimal(base_size = 13) +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 12),\n    panel.grid.major.x = element_blank()\n  )\n\nprint(\n  ggplot(rate_h, aes(x = Height_group, y = rate, fill = rate)) +\n    geom_col(alpha = 0.88, width = 0.55) +\n    geom_text(\n      aes(label = sprintf(\"%.0f%%\\n(n=%d)\", rate, n)),\n      vjust = -0.35, fontface = \"bold\", size = 4\n    ) +\n    scale_fill_gradient(low = \"#013369\", high = \"#D50A0A\", guide = \"none\") +\n    ylim(0, 72) +\n    labs(title = \"Injury Rate by Height Group\", x = NULL, y = \"% with Season-Ending Injury\") +\n    bar_theme\n)\n\n\n\n\n\n\n\n\n\nCode\nprint(\n  ggplot(rate_w, aes(x = Weight_group, y = rate, fill = rate)) +\n    geom_col(alpha = 0.88, width = 0.55) +\n    geom_text(\n      aes(label = sprintf(\"%.0f%%\\n(n=%d)\", rate, n)),\n      vjust = -0.35, fontface = \"bold\", size = 4\n    ) +\n    scale_fill_gradient(low = \"#013369\", high = \"#D50A0A\", guide = \"none\") +\n    ylim(0, 72) +\n    labs(title = \"Injury Rate by Weight Group\", x = NULL, y = \"% with Season-Ending Injury\") +\n    bar_theme\n)\n\n\n\n\n\n\n\n\n\nWhen splitting at the median, a counterintuitive pattern emerges: taller and heavier receivers show higher injury rates in this sample. This cuts against the intuition that smaller receivers might be more fragile. That said, the groups are roughly equal in size and the differences are modest — strong conclusions require more data and controls.\n\n\nWeight Distribution: Injured vs. Not Injured\n\n\nCode\nggplot(df, aes(x = Weight_lbs, fill = Injured, color = Injured)) +\n  geom_density(alpha = 0.35, linewidth = 1) +\n  geom_vline(\n    xintercept = brennan$Weight_lbs,\n    linetype = \"dashed\", color = \"#B8860B\", linewidth = 1\n  ) +\n  annotate(\n    \"text\", x = brennan$Weight_lbs + 3, y = 0.025,\n    label = \"Thompson\\n164 lbs\", hjust = 0,\n    color = \"#8B6914\", fontface = \"bold\", size = 3.6\n  ) +\n  scale_fill_manual(values = pal_fill) +\n  scale_color_manual(values = pal_fill) +\n  labs(\n    title = \"Weight Distribution: Injured vs. Not Injured Receivers\",\n    subtitle = \"Brennan Thompson falls well below the bulk of both distributions\",\n    x = \"Weight (lbs)\", y = \"Density\",\n    fill = NULL, color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position = \"top\",\n    plot.title = element_text(face = \"bold\"),\n    plot.subtitle = element_text(color = \"gray40\")\n  )\n\n\n\n\n\n\n\n\n\nBoth distributions peak around 195–215 lbs and overlap substantially — weight alone is not cleanly separating injured from non-injured receivers. Thompson’s 164 lbs sits far to the left of both curves, in territory with no historical precedent in this sample."
+  },
+  {
+    "objectID": "posts/nfl-wr-injury-analysis.html#takeaways",
+    "href": "posts/nfl-wr-injury-analysis.html#takeaways",
+    "title": "NFL WR Injury Analysis",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nAt 5’9”, 164 lbs, Brennan Thompson is a genuine outlier — no comparable receiver appears in this sample of 170 notable NFL wideouts over the past decade.\nSize alone does not predict season-ending injuries in this data: the distributions between injured and non-injured groups overlap heavily.\nIf anything, larger receivers show slightly higher injury rates when split at the median, which runs counter to the “fragile small receiver” narrative.\nThe more meaningful concern for Thompson may not be injury frequency but durability at the point of contact — a question this dataset can’t answer without play-type and contact data.\n\nThis is an exploratory, descriptive analysis. With ~170 players and no controls for position role, snap count, age, or playing style, these patterns are observational — not causal."
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html",
+    "href": "posts/Home_Field_Advantage.html",
+    "title": "",
+    "section": "",
+    "text": "CodeShow All CodeHide All CodeView Source\nTitle: “Analyzing NFL Home Field Advantage” format: html"
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#introduction",
+    "href": "posts/Home_Field_Advantage.html#introduction",
+    "title": "",
+    "section": "Introduction",
+    "text": "Introduction\nHome field advantage in the NFL refers to the tendency for teams to perform better when playing at their home stadium. This analysis examines how home field advantage has evolved from 2010 to 2024 by looking at two key metrics: home team win percentage and average point differential."
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#data",
+    "href": "posts/Home_Field_Advantage.html#data",
+    "title": "",
+    "section": "Data",
+    "text": "Data\nThis analysis uses NFL game data from 2010 to 2024, examining regular season and playoff games to understand trends in home field advantage over time.\n\n\nCode\nimport nfl_data_py as nfl\nfrom lets_plot import *\nimport pandas as pd\nimport seaborn as sns\nLetsPlot.setup_html()\nyears = range(2010, 2025)\ndf_games = nfl.import_schedules(years)\n\n\n\n        \n        \n        \n\n\n\n\nCode\n# identify who won/lost\n# create home_point_diff and home_win columns\ndf_games['home_point_diff'] = df_games['home_score'] - df_games['away_score']\ndf_games['home_win'] = (df_games['home_point_diff'] &gt; 0).astype(int)\n\ndf_hfa = df_games[['season', 'week', 'home_point_diff', 'home_win']]\n\n# Win percentage by season\nwin_pct_by_season = df_hfa.groupby('season')['home_win'].mean() * 100\n\n# Average point differential by season  \navg_diff_by_season = df_hfa.groupby('season')['home_point_diff'].mean()\n\nplot_df_wp = pd.DataFrame({\n    'Season': win_pct_by_season.index,\n    'Win Percentage': win_pct_by_season.values\n})\n\nplot_df_pd = pd.DataFrame({\n    'Season': avg_diff_by_season.index,\n    'Point Difference' : avg_diff_by_season.values\n})"
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#analysis",
+    "href": "posts/Home_Field_Advantage.html#analysis",
+    "title": "",
+    "section": "Analysis",
+    "text": "Analysis\n\nHome Win Percentage Trends\n\n\nCode\np = (ggplot(plot_df_wp, aes(x='Season', y='Win Percentage')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=win_pct_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='NFL Home Field Advantage: Win Percentage by Season (2010-2024)',\n        subtitle='Average Home Team Win Percentage is 55.7%',\n        x='Season',\n        y='Home Win Percentage (%)'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(50, 60) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np\n\n\n   \n   \n\n\nWe can easily see that hoime field advantage does exist, on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans, however neither 2019 nor 2021 was played without fans, so this appears to just be an anomaly. Since we can see that the home team does have an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nPoint Differential Analysis\n\n\nCode\np2 = (ggplot(plot_df_pd, aes(x='Season', y='Point Difference')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=0, linetype='dashed', color='lightblue', size=1)+\n    geom_hline(yintercept=avg_diff_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='Home Team Average Point Differential (2010-2024)',\n        subtitle='The Home Team Wins By 2.1 Points On Average',\n        x='Season',\n        y='Home Win Point Difference'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(-2, 5) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np2\n\n\n   \n   \n\n\nWe can easily see that home field advantage does exist; on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time, while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans. However, neither 2019 nor 2021 was played without fans (the 2020 season was the most impacted), so this appears to be an anomaly. Since we can see that the home team has an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nCode\npd2019 = pd.read_csv('C:\\\\owen-heap-portfolio\\\\assets\\\\point_dif_2019.csv')\n\nprint(pd2019)\n\n\n   Rank          Winning Team  Margin  Score           Losing Team  \\\n0     1      Baltimore Ravens      49  59-10        Miami Dolphins   \n1     2  New England Patriots      43   43-0        Miami Dolphins   \n2     3      Baltimore Ravens      39   45-6      Los Angeles Rams   \n3     4   San Francisco 49ers      38  51-13     Carolina Panthers   \n4     5      Baltimore Ravens      36  49-13    Cincinnati Bengals   \n5     6  Los Angeles Chargers      35  45-10  Jacksonville Jaguars   \n6     7      Baltimore Ravens      34   41-7        Houston Texans   \n7     8  New England Patriots      33   33-0         New York Jets   \n8     9    New Orleans Saints      32  42-10     Carolina Panthers   \n9    10    Indianapolis Colts      32   38-6     Carolina Panthers   \n\n  Home/Away (Winner)          Date  \n0               Away   Sep 8, 2019  \n1               Away  Sep 15, 2019  \n2               Away  Nov 25, 2019  \n3               Home  Oct 27, 2019  \n4               Away  Nov 10, 2019  \n5               Away   Dec 8, 2019  \n6               Home  Nov 17, 2019  \n7               Away  Oct 21, 2019  \n8               Away  Dec 29, 2019  \n9               Home  Dec 22, 2019  \n\n\nWe can see that it does in fact have a similar trend. The average point differential is the home team winning by 2.1 points. We can see the same dip around 2020, but what is even more strange is that the 2019 season had an even lower point differential than 2020 did. The 2019 season had an average point differential of 0.04, which is less than 1/20th of a point. This led me to look into this outlier of 2019 more."
+  },
+  {
+    "objectID": "posts/Home_Field_Advantage.html#conclusions",
+    "href": "posts/Home_Field_Advantage.html#conclusions",
+    "title": "",
+    "section": "Conclusions",
+    "text": "Conclusions\nWe can see that the three biggest wins of the 2019 season in terms of point differential were won by the away team. We can also see that seven of the ten largest wins of this season were won by the away team. These large discrepancies are the reason for such a low average point difference in 2019 compared to other seasons."
+  },
+  {
+    "objectID": "posts/mlb-strikeout-predictor.html",
+    "href": "posts/mlb-strikeout-predictor.html",
+    "title": "MLB Strikeout Predictor",
+    "section": "",
+    "text": "This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.\nModel inputs:\n\nK/9 — The pitcher’s season strikeout rate per nine innings (primary signal)\nWhiff% / SwStr% — Swinging-strike rate, a pitch-quality proxy from Statcast\nOpponent K% — How often the opposing lineup strikes out, relative to the league average\nProjected IP — The pitcher’s average innings per start (scales the opportunity)\n\nPrediction formula:\n\\[\\hat{K} = \\frac{K/9}{9} \\times \\overline{IP_{GS}} \\times \\frac{Opp\\ K\\%}{Lg\\ K\\%} \\times f_{whiff}\\]\nConfidence range uses Poisson variance scaled by model uncertainty."
+  },
+  {
+    "objectID": "posts/mlb-strikeout-predictor.html#overview",
+    "href": "posts/mlb-strikeout-predictor.html#overview",
+    "title": "MLB Strikeout Predictor",
+    "section": "",
+    "text": "This tool predicts how many strikeouts a starting pitcher will record against a given opponent in an upcoming game. Select any active 2026 MLB starter and an opposing team — the model returns a predicted K count with a transparent breakdown of the key factors driving the estimate.\nModel inputs:\n\nK/9 — The pitcher’s season strikeout rate per nine innings (primary signal)\nWhiff% / SwStr% — Swinging-strike rate, a pitch-quality proxy from Statcast\nOpponent K% — How often the opposing lineup strikes out, relative to the league average\nProjected IP — The pitcher’s average innings per start (scales the opportunity)\n\nPrediction formula:\n\\[\\hat{K} = \\frac{K/9}{9} \\times \\overline{IP_{GS}} \\times \\frac{Opp\\ K\\%}{Lg\\ K\\%} \\times f_{whiff}\\]\nConfidence range uses Poisson variance scaled by model uncertainty."
+  },
+  {
+    "objectID": "posts/mlb-strikeout-predictor.html#live-app",
+    "href": "posts/mlb-strikeout-predictor.html#live-app",
+    "title": "MLB Strikeout Predictor",
+    "section": "Live App",
+    "text": "Live App"
+  },
+  {
+    "objectID": "posts/mlb-strikeout-predictor.html#data-sources",
+    "href": "posts/mlb-strikeout-predictor.html#data-sources",
+    "title": "MLB Strikeout Predictor",
+    "section": "Data Sources",
+    "text": "Data Sources\n\n\n\nSource\nWhat it provides\n\n\n\n\nFanGraphs via pybaseball\nPitcher K/9, SwStr%, GS, IP\n\n\nBaseball Reference via pybaseball\nTeam batting K% and plate appearances\n\n\n\nData refreshes every 12 hours via Streamlit’s cache layer. All stats reflect the current 2026 season; the app falls back to 2025 data for pitchers with fewer than 3 starts."
+  },
+  {
+    "objectID": "posts/mlb-strikeout-predictor.html#deploy-your-own",
+    "href": "posts/mlb-strikeout-predictor.html#deploy-your-own",
+    "title": "MLB Strikeout Predictor",
+    "section": "Deploy Your Own",
+    "text": "Deploy Your Own\nThe source code lives at projects/mlb-strikeout-predictor/ in this repo.\n# Run locally\npip install -r requirements.txt\nstreamlit run app.py\nTo deploy on Streamlit Cloud:\n\nGo to share.streamlit.io and connect your GitHub account.\nSelect this repository, set the App file path to projects/mlb-strikeout-predictor/app.py.\nClick Deploy — Streamlit Cloud installs requirements.txt automatically.\nCopy the generated URL and paste it into the src attribute of the &lt;iframe&gt; above."
   },
   {
     "objectID": "posts/project-one.html",
@@ -189,73 +231,31 @@
     "text": "Takeaways\n\nWhat worked well?\nWhat would you do differently?\nWhat’s the next question this raises?"
   },
   {
-    "objectID": "posts/Home_Field_Advantage.html",
-    "href": "posts/Home_Field_Advantage.html",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "",
     "section": "",
-    "text": "CodeShow All CodeHide All CodeView Source\nTitle: “Analyzing NFL Home Field Advantage” format: html"
+    "text": "Code"
   },
   {
-    "objectID": "posts/Home_Field_Advantage.html#introduction",
-    "href": "posts/Home_Field_Advantage.html#introduction",
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
     "title": "",
-    "section": "Introduction",
-    "text": "Introduction\nHome field advantage in the NFL refers to the tendency for teams to perform better when playing at their home stadium. This analysis examines how home field advantage has evolved from 2010 to 2024 by looking at two key metrics: home team win percentage and average point differential."
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\n\n  \n    Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Interactive app that predicts pitcher strikeout totals using K/9, opponent K%, and projected innings. Powered by the live MLB Stats API.\n    View project →\n  \n\n\n    Python · Lets-Plot\n    Analyzing NFL Home Field Advantage\n    A data-driven deep dive into 15 years of NFL scoring trends, identifying the 2019 statistical anomaly in home-team performance.\n    View project →\n\n\n  \n    R · ggplot2 · tidyverse · NFL\n    NFL WR Injury Analysis\n    Exploratory analysis of whether height and weight predict season-ending injuries among 170 notable NFL receivers — motivated by the Chargers drafting Brennan Thompson at an extreme 5'9\", 164 lbs.\n    View project →"
   },
   {
-    "objectID": "posts/Home_Field_Advantage.html#data",
-    "href": "posts/Home_Field_Advantage.html#data",
+    "objectID": "index.html#tools-skills",
+    "href": "index.html#tools-skills",
     "title": "",
-    "section": "Data",
-    "text": "Data\nThis analysis uses NFL game data from 2010 to 2024, examining regular season and playoff games to understand trends in home field advantage over time.\n\n\nCode\nimport nfl_data_py as nfl\nfrom lets_plot import *\nimport pandas as pd\nimport seaborn as sns\nLetsPlot.setup_html()\nyears = range(2010, 2025)\ndf_games = nfl.import_schedules(years)\n\n\n\n        \n        \n        \n\n\n\n\nCode\n# identify who won/lost\n# create home_point_diff and home_win columns\ndf_games['home_point_diff'] = df_games['home_score'] - df_games['away_score']\ndf_games['home_win'] = (df_games['home_point_diff'] &gt; 0).astype(int)\n\ndf_hfa = df_games[['season', 'week', 'home_point_diff', 'home_win']]\n\n# Win percentage by season\nwin_pct_by_season = df_hfa.groupby('season')['home_win'].mean() * 100\n\n# Average point differential by season  \navg_diff_by_season = df_hfa.groupby('season')['home_point_diff'].mean()\n\nplot_df_wp = pd.DataFrame({\n    'Season': win_pct_by_season.index,\n    'Win Percentage': win_pct_by_season.values\n})\n\nplot_df_pd = pd.DataFrame({\n    'Season': avg_diff_by_season.index,\n    'Point Difference' : avg_diff_by_season.values\n})"
+    "section": "Tools & Skills",
+    "text": "Tools & Skills\n\n  R\n  Python\n  ggplot2\n  tidyverse\n  Streamlit\n  pandas\n  Quarto\n  SQL\n  Statistics\n  Data Visualization"
   },
   {
-    "objectID": "posts/Home_Field_Advantage.html#analysis",
-    "href": "posts/Home_Field_Advantage.html#analysis",
-    "title": "",
-    "section": "Analysis",
-    "text": "Analysis\n\nHome Win Percentage Trends\n\n\nCode\np = (ggplot(plot_df_wp, aes(x='Season', y='Win Percentage')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=win_pct_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='NFL Home Field Advantage: Win Percentage by Season (2010-2024)',\n        subtitle='Average Home Team Win Percentage is 55.7%',\n        x='Season',\n        y='Home Win Percentage (%)'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(50, 60) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np\n\n\n   \n   \n\n\nWe can easily see that hoime field advantage does exist, on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans, however neither 2019 nor 2021 was played without fans, so this appears to just be an anomaly. Since we can see that the home team does have an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nPoint Differential Analysis\n\n\nCode\np2 = (ggplot(plot_df_pd, aes(x='Season', y='Point Difference')) +\n    geom_line(color='#013369', size=1.5) +\n    geom_point(color='#013369', size=3) +\n    geom_hline(yintercept=0, linetype='dashed', color='lightblue', size=1)+\n    geom_hline(yintercept=avg_diff_by_season.mean(), linetype='dashed', color='gray', size=1) +\n    labs(\n        title='Home Team Average Point Differential (2010-2024)',\n        subtitle='The Home Team Wins By 2.1 Points On Average',\n        x='Season',\n        y='Home Win Point Difference'\n    ) +\n    scale_x_continuous(format='d') + \n    ylim(-2, 5) +\n    theme_minimal() +\n    theme(\n        plot_title=element_text(size=16, face='bold'),\n        axis_title=element_text(size=12, face='bold')\n    ))\n\np2\n\n\n   \n   \n\n\nWe can easily see that home field advantage does exist; on average over the past 15 seasons, the home team has won 55.7% of the time. Seasons like 2013 and 2018 both saw the home team win over 59% of the time, while there was a dip in 2019 and 2021. My first hypothesis was that this dip was related to the Covid season and there being no fans. However, neither 2019 nor 2021 was played without fans (the 2020 season was the most impacted), so this appears to be an anomaly. Since we can see that the home team has an edge over their opponents, this made me curious if the point differential would show a similar trend.\n\n\nCode\npd2019 = pd.read_csv('C:\\\\owen-heap-portfolio\\\\assets\\\\point_dif_2019.csv')\n\nprint(pd2019)\n\n\n   Rank          Winning Team  Margin  Score           Losing Team  \\\n0     1      Baltimore Ravens      49  59-10        Miami Dolphins   \n1     2  New England Patriots      43   43-0        Miami Dolphins   \n2     3      Baltimore Ravens      39   45-6      Los Angeles Rams   \n3     4   San Francisco 49ers      38  51-13     Carolina Panthers   \n4     5      Baltimore Ravens      36  49-13    Cincinnati Bengals   \n5     6  Los Angeles Chargers      35  45-10  Jacksonville Jaguars   \n6     7      Baltimore Ravens      34   41-7        Houston Texans   \n7     8  New England Patriots      33   33-0         New York Jets   \n8     9    New Orleans Saints      32  42-10     Carolina Panthers   \n9    10    Indianapolis Colts      32   38-6     Carolina Panthers   \n\n  Home/Away (Winner)          Date  \n0               Away   Sep 8, 2019  \n1               Away  Sep 15, 2019  \n2               Away  Nov 25, 2019  \n3               Home  Oct 27, 2019  \n4               Away  Nov 10, 2019  \n5               Away   Dec 8, 2019  \n6               Home  Nov 17, 2019  \n7               Away  Oct 21, 2019  \n8               Away  Dec 29, 2019  \n9               Home  Dec 22, 2019  \n\n\nWe can see that it does in fact have a similar trend. The average point differential is the home team winning by 2.1 points. We can see the same dip around 2020, but what is even more strange is that the 2019 season had an even lower point differential than 2020 did. The 2019 season had an average point differential of 0.04, which is less than 1/20th of a point. This led me to look into this outlier of 2019 more."
-  },
-  {
-    "objectID": "posts/Home_Field_Advantage.html#conclusions",
-    "href": "posts/Home_Field_Advantage.html#conclusions",
-    "title": "",
-    "section": "Conclusions",
-    "text": "Conclusions\nWe can see that the three biggest wins of the 2019 season in terms of point differential were won by the away team. We can also see that seven of the ten largest wins of this season were won by the away team. These large discrepancies are the reason for such a low average point difference in 2019 compared to other seasons."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "I’m studying data science and have a passion for using data to tell compelling stories. I enjoy exploring data, building models, and creating visualizations that help others understand complex information."
-  },
-  {
-    "objectID": "about.html#hi-im-owen-heap",
-    "href": "about.html#hi-im-owen-heap",
-    "title": "About Me",
-    "section": "",
-    "text": "I’m studying data science and have a passion for using data to tell compelling stories. I enjoy exploring data, building models, and creating visualizations that help others understand complex information."
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Me",
-    "section": "Background",
-    "text": "Background\n\nSenior Studying Data Science at Brigham Young University - Idaho\nI love using data to solve problems and tell a story\nCurrently working on improving my skills in machine learning and data visualization through classes and personal projects"
-  },
-  {
-    "objectID": "about.html#skills",
-    "href": "about.html#skills",
-    "title": "About Me",
-    "section": "Skills",
-    "text": "Skills\n\n  R\n  Pandas\n  ggplot2\n  tidyverse\n  Quarto\n  SQL\n  Statistics\n  Data Visualization\n  Machine Learning"
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About Me",
-    "section": "Contact",
-    "text": "Contact\n\n📧 ooheap@gmail.com\n🐙 github.com/ooheap\n💼 linkedin.com/in/owen-heap"
+    "text": "Python · Streamlit · MLB API\n    MLB Strikeout Predictor\n    Predicts pitcher strikeout totals using live MLB Stats API data. Select any 2026 starter and an opponent to get a projected K count.\n    View project →\n  \n\n  \n    R · ggplot2 · tidyverse · NFL\n    NFL WR Injury Analysis\n    Do smaller receivers get hurt more often? Four ggplot2 visualizations explore size vs. injury rate across 170 receivers — sparked by the Chargers drafting 164-lb Brennan Thompson.\n    View project →\n  \n\n  \n    Python · Lets-Plot · NFL\n    NFL Home Field Advantage\n    15 years of NFL scoring data reveal a steady home-team edge — and a strange 2019 anomaly where the advantage nearly vanished.\n    View project →"
   }
 ]
