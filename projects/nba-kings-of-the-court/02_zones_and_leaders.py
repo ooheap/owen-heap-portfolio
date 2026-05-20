@@ -8,7 +8,7 @@ NBA shot coordinates (from ShotChartDetail):
   - Court is 50 ft wide. 3pt line: 23.75 ft (237.5 units) above the break,
     22 ft (220 units) in the corners. Corners end at LOC_Y = 140 (14 ft).
 
-Your 11 zones:
+Your 12 zones:
   THREE-POINT (5):
     1. Left corner 3       (x <= -220, y <= 140, beyond 3pt line)
     2. Left wing 3         (left side, above break, between corner and TOK)
@@ -21,8 +21,9 @@ Your 11 zones:
     8. Free throw / center mid (center, above the paint, inside 3pt)
     9. Right elbow
     10. Right baseline mid
-  PAINT (1):
-    11. Paint — the entire key/lane (x in [-80,80], y in [-47.5,190])
+  PAINT (2):
+    11. Paint              (inside the key, outside restricted area)
+    12. Restricted Area    (inside the key, near the basket)
 """
 
 import math
@@ -65,11 +66,11 @@ def assign_zone(x: float, y: float) -> str:
             return "Top of Key 3"
 
     # --- It's a 2-point shot. ---
-    # Paint: the entire key/lane — x in [-80,80], y from baseline to FT line.
-    # Use y >= -47.5 so corner-of-the-paint baseline shots are included.
     in_paint = (PAINT_LEFT_X <= x <= PAINT_RIGHT_X) and (-47.5 <= y <= PAINT_TOP_Y)
 
     if in_paint:
+        if dist <= RESTRICTED_RADIUS + 10:
+            return "Restricted Area"
         return "Paint"
 
     # Mid-range: not paint, inside the arc
@@ -101,6 +102,7 @@ ZONE_ORDER = [
     "Right Elbow Mid",
     "Right Baseline Mid",
     "Paint",
+    "Restricted Area",
 ]
 
 
@@ -171,8 +173,9 @@ if __name__ == "__main__":
         "Left Elbow Mid":     25,
         "Right Elbow Mid":    20,
         "Center Mid (FT)":    20,
-        # Full paint zone: plenty of volume
-        "Paint": 75,
+        # Paint zones: split at restricted area arc
+        "Paint":            75,
+        "Restricted Area":  75,
     }
     leaders = find_zone_leaders(df, min_attempts=min_att)
     print(leaders.to_string(index=False))
