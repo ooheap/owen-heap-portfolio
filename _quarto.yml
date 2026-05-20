@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - assets/kings_of_the_court.mp4
 
 website:
   title: "Owen Heap"
