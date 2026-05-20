@@ -15,14 +15,14 @@ Your 12 zones:
     3. Top of key 3        (center, above the break)
     4. Right wing 3        (right side, above break)
     5. Right corner 3      (x >= 220, y <= 140)
-  MID-RANGE (5):
+  MID-RANGE (4):
     6. Left baseline mid   (left side, low y, inside 3pt line, outside paint)
     7. Left elbow          (left side, mid y, outside paint, inside 3pt)
-    8. Free throw / center mid (center, above the paint, inside 3pt)
-    9. Right elbow
-    10. Right baseline mid
-  PAINT (2):
-    11. Paint              (inside the key, outside restricted area)
+    8. Right elbow
+    9. Right baseline mid
+  PAINT (3):
+    10. Upper Paint        (in paint, y > 140, outside restricted area)
+    11. Paint              (in paint, y <= 140, outside restricted area)
     12. Restricted Area    (inside the key, near the basket)
 """
 
@@ -71,21 +71,19 @@ def assign_zone(x: float, y: float) -> str:
     if in_paint:
         if dist <= RESTRICTED_RADIUS + 10:
             return "Restricted Area"
+        # Split paint at y=140: upper paint (free-throw lane area) vs lower paint
+        if y > CORNER_Y_LIMIT:
+            return "Upper Paint"
         return "Paint"
 
     # Mid-range: not paint, inside the arc
-    # Split by side (left/right) and height (baseline / elbow / center)
-    # Threshold between "baseline" and "elbow" mid-range. ~14 ft up from the
-    # baseline matches the corner-3 cutoff, which is a natural break.
+    # Split by side (left/right) and height (baseline / elbow)
     BASELINE_ELBOW_Y = 140
 
-    # Center mid-range (free throw / above paint) — narrow center column
-    if abs(x) < 60 and y > PAINT_TOP_Y:
-        return "Center Mid (FT)"
     # Baseline mid-range: low y
     if y <= BASELINE_ELBOW_Y:
         return "Left Baseline Mid" if x < 0 else "Right Baseline Mid"
-    # Elbow mid-range: higher y
+    # Elbow mid-range: higher y (absorbs what was Center Mid)
     return "Left Elbow Mid" if x < 0 else "Right Elbow Mid"
 
 
@@ -98,9 +96,9 @@ ZONE_ORDER = [
     "Right Corner 3",
     "Left Baseline Mid",
     "Left Elbow Mid",
-    "Center Mid (FT)",
     "Right Elbow Mid",
     "Right Baseline Mid",
+    "Upper Paint",
     "Paint",
     "Restricted Area",
 ]
@@ -165,15 +163,13 @@ if __name__ == "__main__":
         "Left Wing 3":    75,
         "Right Wing 3":   75,
         "Top of Key 3":   75,
-        # Mid-range: modern NBA shoots these sparingly — max player FGA
-        # in these zones last season was 28-50, so 75 would empty them.
-        # Using realistic ceilings instead.
+        # Mid-range: modern NBA shoots these sparingly
         "Left Baseline Mid":  35,
         "Right Baseline Mid": 35,
         "Left Elbow Mid":     25,
         "Right Elbow Mid":    20,
-        "Center Mid (FT)":    20,
-        # Paint zones: split at restricted area arc
+        # Paint zones
+        "Upper Paint":      75,
         "Paint":            75,
         "Restricted Area":  75,
     }
