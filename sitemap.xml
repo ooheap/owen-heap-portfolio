@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ooheap.github.io/owen-heap-portfolio/about.html</loc>
-    <lastmod>2026-05-20T21:45:06.146Z</lastmod>
-  </url>
-  <url>
     <loc>https://ooheap.github.io/owen-heap-portfolio/resume.html</loc>
-    <lastmod>2026-05-20T21:45:06.168Z</lastmod>
+    <lastmod>2026-10-13T19:46:24.461Z</lastmod>
   </url>
   <url>
-    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/nfl-wr-injury-analysis.html</loc>
-    <lastmod>2026-05-20T21:45:06.151Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/project-one.html</loc>
-    <lastmod>2026-05-20T21:45:06.151Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/mlb-strikeout-predictor.html</loc>
-    <lastmod>2026-05-20T21:45:06.151Z</lastmod>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/projects/traffic-sign-classifier/traffic_sign_classifier.html</loc>
+    <lastmod>2026-10-13T19:46:24.461Z</lastmod>
   </url>
   <url>
     <loc>https://ooheap.github.io/owen-heap-portfolio/posts/Home_Field_Advantage.html</loc>
-    <lastmod>2026-05-20T21:45:06.150Z</lastmod>
+    <lastmod>2026-10-13T19:46:24.433Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/house-price-prediction.html</loc>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
   </url>
   <url>
     <loc>https://ooheap.github.io/owen-heap-portfolio/posts/kings-of-the-court.html</loc>
-    <lastmod>2026-05-20T21:45:06.151Z</lastmod>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
   </url>
   <url>
-    <loc>https://ooheap.github.io/owen-heap-portfolio/index.html</loc>
-    <lastmod>2026-05-20T21:45:06.150Z</lastmod>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/project-one.html</loc>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
   </url>
   <url>
     <loc>https://ooheap.github.io/owen-heap-portfolio/projects.html</loc>
-    <lastmod>2026-05-20T21:45:06.151Z</lastmod>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/index.html</loc>
+    <lastmod>2026-10-13T19:46:24.433Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/nfl-wr-injury-analysis.html</loc>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/traffic-sign-classifier.html</loc>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/posts/mlb-strikeout-predictor.html</loc>
+    <lastmod>2026-10-13T19:46:24.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/about.html</loc>
+    <lastmod>2026-10-13T19:46:24.430Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ooheap.github.io/owen-heap-portfolio/projects/house-price-prediction/house_price_prediction.html</loc>
+    <lastmod>2026-10-13T19:46:24.435Z</lastmod>
   </url>
 </urlset>
