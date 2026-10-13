@@ -36,5 +36,19 @@ page-layout: full
     <a href="posts/kings-of-the-court.html">View project →</a>
   </div>
 
+  <div class="proj-card">
+    <span class="proj-tag">Python · TensorFlow · CNN · Computer Vision</span>
+    <h3>Traffic Sign Classifier</h3>
+    <p>A convolutional neural network classifies 43 types of German traffic signs from more than 31,000 training images, reaching 98.01% accuracy on a mini holdout set.</p>
+    <a href="posts/traffic-sign-classifier.html">View project →</a>
+  </div>
+
+  <div class="proj-card">
+    <span class="proj-tag">Python · XGBoost · pandas · Regression</span>
+    <h3>House Price Prediction</h3>
+    <p>An XGBoost regression model estimates home sale prices from property characteristics, engineered age and renovation features, and ZIP-code indicators.</p>
+    <a href="posts/house-price-prediction.html">View project →</a>
+  </div>
+
 </div>
 ```

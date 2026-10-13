@@ -52,6 +52,20 @@ toc: false
     <a href="posts/kings-of-the-court.html">View project →</a>
   </div>
 
+  <div class="proj-card">
+    <span class="proj-tag">Python · TensorFlow · CNN</span>
+    <h3>Traffic Sign Classifier</h3>
+    <p>A 43-class image classifier that recognizes German traffic signs with 98.01% mini-holdout accuracy.</p>
+    <a href="posts/traffic-sign-classifier.html">View project →</a>
+  </div>
+
+  <div class="proj-card">
+    <span class="proj-tag">Python · XGBoost · Regression</span>
+    <h3>House Price Prediction</h3>
+    <p>An XGBoost model that predicts home prices with engineered property, renovation, and location features.</p>
+    <a href="posts/house-price-prediction.html">View project →</a>
+  </div>
+
 </div>
 ```
 

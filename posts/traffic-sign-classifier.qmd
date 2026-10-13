@@ -1,0 +1,34 @@
+---
+title: "Traffic Sign Classifier"
+description: "A TensorFlow convolutional neural network for 43-class German traffic-sign recognition."
+categories: [Computer Vision, Python, TensorFlow, Machine Learning]
+date: 2026-10-13
+format:
+  html:
+    toc: false
+    code-tools: false
+---
+
+## Overview
+
+This project trains a convolutional neural network to recognize German traffic signs from images. The workflow uses Keras image generators, an 80/20 training-validation split, batch normalization, max pooling, and a learning-rate reduction callback.
+
+The dataset contains 43 sign categories, including speed limits, warnings, right-of-way signs, and prohibitions. The model was trained on 31,368 images and validated on 7,841 images.
+
+## Results
+
+The final model achieved **98.01% accuracy on the 201-image mini holdout set**. The model contains 920,299 parameters and showed strong performance across most sign classes in the classification report and confusion matrix.
+
+## Approach
+
+- Loaded and normalized image data with `ImageDataGenerator`.
+- Inspected example images and the `Speed_120` class before training.
+- Built a three-block CNN with convolution, batch normalization, ReLU activation, and max pooling.
+- Trained for up to 20 epochs with `ReduceLROnPlateau`.
+- Evaluated predictions with accuracy, a classification report, and a confusion matrix.
+
+## Source notebook
+
+The complete analysis and saved predictions are available in the [traffic-sign-classifier project folder](https://github.com/ooheap/owen-heap-portfolio/tree/main/projects/traffic-sign-classifier).
+
+> This project uses the German Traffic Sign Recognition Benchmark-style course dataset. The holdout accuracy is specific to the provided course split and should not be treated as production performance.

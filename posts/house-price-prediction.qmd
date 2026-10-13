@@ -1,0 +1,34 @@
+---
+title: "House Price Prediction"
+description: "An XGBoost regression model for estimating residential sale prices."
+categories: [Machine Learning, Python, XGBoost, Regression]
+date: 2026-10-13
+format:
+  html:
+    toc: false
+    code-tools: false
+---
+
+## Overview
+
+This project predicts residential sale prices using property characteristics and location. Starting from 20,000 housing records, I created features for sale year and month, age at sale, time since renovation, renovation status, and basement presence. ZIP codes were one-hot encoded so the model could learn location-specific price patterns.
+
+## Model and results
+
+I trained an `XGBRegressor` with 800 trees, a 0.05 learning rate, and maximum tree depth of 6. On a held-out 15% test set, it achieved:
+
+| Metric | Result |
+|---|---:|
+| Test RMSE | **$101,498.41** |
+| R² | **0.9223** |
+| Training RMSE | $46,214.86 |
+
+The gap between training and test RMSE is a useful reminder that strong predictive performance can still coexist with some overfitting, especially in a flexible gradient-boosting model.
+
+## Analysis
+
+The notebook also examines feature importance and breaks down RMSE across price bands. These checks make the model easier to interpret and help identify where its errors are largest.
+
+## Source notebook
+
+The complete feature engineering, modeling, evaluation, and holdout prediction workflow is available in the [house-price-prediction project folder](https://github.com/ooheap/owen-heap-portfolio/tree/main/projects/house-price-prediction).
